@@ -1,9 +1,16 @@
 ---
-// import AppHeader from "../components/AppHeader.astro";
-// import AppFooter from "../components/AppFooter.astro";
+import AppHeader from "../components/AppHeader.astro";
+import AppFooter from "../components/AppFooter.astro";
 
 import "../styles/colors.scss";
 import "../styles/fonts.scss";
+import type { Page_Meta } from "../locales/_def.types";
+
+interface Props {
+	meta: Page_Meta;
+}
+
+const { meta } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,7 +21,7 @@ import "../styles/fonts.scss";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>The Coonpany</title>
+		<title>{meta.title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -24,9 +31,9 @@ import "../styles/fonts.scss";
 	</head>
 
 	<body>
-		<!-- <AppHeader /> -->
+		<AppHeader />
 		<slot />
-		<!-- <AppFooter /> -->
+		<AppFooter />
 	</body>
 </html>
 

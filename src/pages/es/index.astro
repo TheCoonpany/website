@@ -1,0 +1,12 @@
+---
+import WIP_View from "../../views/WIP.view.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { ES } from "../../locales";
+
+const locales = ES.home;
+---
+
+<Layout meta={locales.meta}>
+	<WIP_View />
+</Layout>

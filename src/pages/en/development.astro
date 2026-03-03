@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Development_View from "../../views/Development.view.astro";
+
+import { EN } from "../../locales";
+
+const locales = EN.development;
+---
+
+<Layout meta={locales.meta}>
+  <Development_View locales={locales} />
+</Layout>

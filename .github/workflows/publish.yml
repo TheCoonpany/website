@@ -1,0 +1,29 @@
+name: Publish
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    name: Publish
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm i -g pnpm
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      # Builds
+
+      # - name: Build lib
+      #   run: pnpm build

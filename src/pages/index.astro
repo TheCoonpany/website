@@ -7,6 +7,6 @@ import { es } from "../locales";
 const locales = es.home;
 ---
 
-<Layout meta={locales.meta} lang="es">
+<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang="es">
 	<WIP_View />
 </Layout>

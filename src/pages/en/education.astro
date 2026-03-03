@@ -9,6 +9,6 @@ const { lang, i18n } = getPageI18n(import.meta.url);
 const locales = i18n.education;
 ---
 
-<Layout meta={locales.meta} lang={lang}>
+<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang={lang}>
   <Education_View locales={locales} />
 </Layout>

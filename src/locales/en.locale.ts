@@ -6,27 +6,27 @@ export const en = {
   },
   home: {
     meta: {
-      title: '',
+      title: 'The Coonpany | Consultancy, Development and Education in Software',
       description: ''
     }
   },
   education: {
     meta: {
-      title: '',
+      title: 'Education | The Coonpany',
       description: ''
     },
     header: 'Education',
   },
   development: {
     meta: {
-      title: '',
+      title: 'Development | The Coonpany',
       description: ''
     },
     header: 'Development',
   },
   consultancy: {
     meta: {
-      title: '',
+      title: 'Consultancy | The Coonpany',
       description: ''
     },
     header: 'Consultancy',

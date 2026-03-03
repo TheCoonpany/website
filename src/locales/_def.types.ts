@@ -22,4 +22,5 @@ export interface LocalesDict {
 export interface Page_Meta {
   readonly title: string;
   readonly description: string;
+  readonly keywords?: string[];
 }

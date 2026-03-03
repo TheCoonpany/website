@@ -10,11 +10,13 @@ import type { Page_Meta } from "../locales/_def.types";
 import type { Locale } from "../helpers/locales";
 
 interface Props {
-	meta: Page_Meta;
+	meta: Page_Meta & { url: string };
 	lang: Locale;
 }
 
 const { meta, lang } = Astro.props;
+
+const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 ---
 
 <!doctype html>
@@ -26,6 +28,13 @@ const { meta, lang } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{meta.title}</title>
+		<meta name="description" content={meta.description} />
+		{
+			meta.keywords && (
+				<meta name="keywords" content={meta.keywords?.join(", ")} />
+			)
+		}
+		<link rel="canonical" href={`${SITE_URL}${meta.url}`} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

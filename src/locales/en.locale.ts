@@ -1,6 +1,6 @@
 import type { LocalesDict } from './_def.types';
 
-export const EN = {
+export const en = {
   _shared: {
 
   },
@@ -14,18 +14,21 @@ export const EN = {
     meta: {
       title: '',
       description: ''
-    }
+    },
+    header: 'Education',
   },
   development: {
     meta: {
       title: '',
       description: ''
-    }
+    },
+    header: 'Development',
   },
   consultancy: {
     meta: {
       title: '',
       description: ''
-    }
+    },
+    header: 'Consultancy',
   },
 } as const satisfies LocalesDict;

@@ -7,12 +7,15 @@ export interface LocalesDict {
   },
   education: {
     meta: Page_Meta;
+    header: string;
   },
   development: {
     meta: Page_Meta;
+    header: string;
   },
   consultancy: {
     meta: Page_Meta;
+    header: string;
   };
 }
 

@@ -1,12 +1,14 @@
 ---
-import WIP_View from "../../views/WIP.view.astro";
+import Home_View from "../../views/Home.view.astro";
 import Layout from "../../layouts/Layout.astro";
 
-import { ES } from "../../locales";
+import { getPageI18n } from "../../helpers/locales";
 
-const locales = ES.home;
+const { lang, i18n } = getPageI18n(import.meta.url);
+
+const locales = i18n.home;
 ---
 
-<Layout meta={locales.meta}>
-	<WIP_View />
+<Layout meta={locales.meta} lang={lang}>
+	<Home_View locales={locales} />
 </Layout>

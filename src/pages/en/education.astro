@@ -2,11 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import Education_View from "../../views/Education.view.astro";
 
-import { EN } from "../../locales";
+import { getPageI18n } from "../../helpers/locales";
 
-const locales = EN.education;
+const { lang, i18n } = getPageI18n(import.meta.url);
+
+const locales = i18n.education;
 ---
 
-<Layout meta={locales.meta}>
+<Layout meta={locales.meta} lang={lang}>
   <Education_View locales={locales} />
 </Layout>

@@ -2,11 +2,11 @@
 import WIP_View from "../views/WIP.view.astro";
 import Layout from "../layouts/Layout.astro";
 
-import { ES } from "../locales";
+import { es } from "../locales";
 
-const locales = ES.home;
+const locales = es.home;
 ---
 
-<Layout meta={locales.meta}>
+<Layout meta={locales.meta} lang="es">
 	<WIP_View />
 </Layout>

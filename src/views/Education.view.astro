@@ -1,9 +1,15 @@
 ---
+import ContentLayout from "../components/ContentLayout.astro";
+
 import type { LocalesDict } from "../locales/_def.types";
 
 interface Props {
   locales: LocalesDict["education"];
 }
+
+const { locales } = Astro.props;
 ---
 
-<h1>Formación</h1>
+<ContentLayout>
+  <h1>{locales.header}</h1>
+</ContentLayout>

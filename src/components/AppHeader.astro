@@ -1,19 +1,63 @@
 ---
+import { NAV_LABELS } from "../helpers/sitemap";
 import ContentLayout from "./ContentLayout.astro";
 
-interface Props {}
+import type { Locale } from "../helpers/locales";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <header id="app-header">
   <ContentLayout>
-    {""}
+    <nav>
+      <a href={`/${lang}`}>The Coonpany</a>
+
+      <ul>
+        {
+          Object.values(NAV_LABELS[lang]).map((value) => (
+            <li>
+              <a href={value.url}>{value.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a href={`/${lang === "es" ? "en" : "es"}`}>
+        {lang === "es" ? "EN" : "ES"}
+      </a>
+    </nav>
   </ContentLayout>
 </header>
 
 <style lang="scss">
   header#app-header {
-    position: fixed;
     background-color: #000000;
     inset-inline: 0;
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      padding-block: 0.5rem;
+
+      > ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 </style>

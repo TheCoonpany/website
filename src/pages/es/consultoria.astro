@@ -2,11 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import Consultancy_View from "../../views/Consultancy.view.astro";
 
-import { ES } from "../../locales";
+import { getPageI18n } from "../../helpers/locales";
 
-const locales = ES.consultancy;
+const { lang, i18n } = getPageI18n(import.meta.url);
+
+const locales = i18n.consultancy;
 ---
 
-<Layout meta={locales.meta}>
+<Layout meta={locales.meta} lang={lang}>
   <Consultancy_View locales={locales} />
 </Layout>

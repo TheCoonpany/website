@@ -4,6 +4,8 @@ import type { LocalesDict } from "../locales/_def.types";
 interface Props {
   locales: LocalesDict["home"];
 }
+
+const { locales } = Astro.props;
 ---
 
 <h1>Home</h1>

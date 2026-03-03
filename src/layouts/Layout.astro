@@ -1,20 +1,24 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 import AppHeader from "../components/AppHeader.astro";
 import AppFooter from "../components/AppFooter.astro";
 
 import "../styles/colors.scss";
 import "../styles/fonts.scss";
 import type { Page_Meta } from "../locales/_def.types";
+import type { Locale } from "../helpers/locales";
 
 interface Props {
 	meta: Page_Meta;
+	lang: Locale;
 }
 
-const { meta } = Astro.props;
+const { meta, lang } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -28,14 +32,25 @@ const { meta } = Astro.props;
 			href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Special+Elite&display=swap"
 			rel="stylesheet"
 		/>
+
+		<ClientRouter />
 	</head>
 
 	<body>
-		<AppHeader />
-		<slot />
-		<AppFooter />
+		<AppHeader lang={lang} />
+		<main id="app-content">
+			<slot />
+			<AppFooter />
+		</main>
 	</body>
 </html>
+
+<style lang="scss">
+	#app-content {
+		overflow: hidden scroll;
+		min-height: 100%;
+	}
+</style>
 
 <style is:global lang="scss">
 	html,
@@ -46,10 +61,17 @@ const { meta } = Astro.props;
 	}
 
 	body {
-		overflow: hidden scroll;
+		overflow: hidden;
 		background-color: #e3e0d5;
 		color: #222;
 		font-family: var(--f-font);
+		display: grid;
+		grid-template-rows: max-content 1fr;
+		height: 100dvh;
+
+		&:has(#wip) #app-header {
+			display: none;
+		}
 	}
 
 	* {

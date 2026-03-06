@@ -1,6 +1,7 @@
 ---
 import { NAV_LABELS } from "../helpers/sitemap";
 import ContentLayout from "./ContentLayout.astro";
+import FolderLink from "./AppHeader.FolderLink.astro";
 
 import type { Locale } from "../helpers/locales";
 
@@ -14,14 +15,14 @@ const { lang } = Astro.props;
 <header id="app-header">
   <ContentLayout>
     <nav>
-      <a href={`/${lang}`}>The Coonpany</a>
+      <div id="logo">
+        <a href={`/${lang}`}>The Coonpany</a>
+      </div>
 
       <ul>
         {
-          Object.values(NAV_LABELS[lang]).map((value) => (
-            <li>
-              <a href={value.url}>{value.label}</a>
-            </li>
+          Object.entries(NAV_LABELS[lang]).map(([id, value]) => (
+            <FolderLink page={id} name={value.label} href={value.url} />
           ))
         }
       </ul>
@@ -35,7 +36,7 @@ const { lang } = Astro.props;
 
 <style lang="scss">
   header#app-header {
-    background-color: #000000;
+    background-color: #111;
     inset-inline: 0;
 
     nav {
@@ -43,21 +44,30 @@ const { lang } = Astro.props;
       grid-template-columns: repeat(3, max-content);
       align-items: center;
       width: 100%;
+      height: 3.5rem;
       justify-content: space-between;
-      padding-block: 0.5rem;
 
       > ul {
         display: flex;
-        gap: 1.5rem;
         list-style: none;
         margin: 0;
         padding: 0;
+        height: 100%;
+        padding-inline: 2rem 1rem;
+        overflow: clip;
       }
     }
 
     a {
-      color: #fff;
+      color: #ddd;
       text-decoration: none;
+    }
+
+    #logo {
+      a {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+      }
     }
   }
 </style>

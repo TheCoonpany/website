@@ -3,3 +3,9 @@
 
   --f-font: "Special Elite", system-ui;
 }
+
+* {
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

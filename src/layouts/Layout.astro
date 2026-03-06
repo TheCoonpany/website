@@ -5,7 +5,10 @@ import AppHeader from "../components/AppHeader.astro";
 import AppFooter from "../components/AppFooter.astro";
 
 import "../styles/colors.scss";
+import "../styles/shadows.scss";
 import "../styles/fonts.scss";
+import "../styles/navigation.scss";
+
 import type { Page_Meta } from "../locales/_def.types";
 import type { Locale } from "../helpers/locales";
 
@@ -48,7 +51,9 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 	<body>
 		<AppHeader lang={lang} />
 		<main id="app-content">
-			<slot />
+			<div>
+				<slot />
+			</div>
 			<AppFooter />
 		</main>
 	</body>
@@ -57,6 +62,8 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 <style lang="scss">
 	#app-content {
 		overflow: hidden scroll;
+		display: grid;
+		grid-template-rows: 1fr max-content;
 		min-height: 100%;
 	}
 </style>
@@ -77,8 +84,9 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 		display: grid;
 		grid-template-rows: max-content 1fr;
 		height: 100dvh;
+		min-width: 360px;
 
-		&:has(#wip) #app-header {
+		&:has(#wip) :is(#app-header, #app-footer) {
 			display: none;
 		}
 	}

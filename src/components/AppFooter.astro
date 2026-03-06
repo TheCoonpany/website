@@ -1,16 +1,69 @@
 ---
-interface Props {
+import ContentLayout from "./ContentLayout.astro";
 
-}
+interface Props {}
 ---
 
 <footer id="app-footer">
+  <ContentLayout>
+    <nav>
+      <p>The coonpany</p>
 
+      <ul>
+        <li>
+          <a
+            href="https://github.com/TheCoonpany"
+            target="_black"
+            style={{ "--icon": "url(/icon/github.svg)" }}></a>
+          <li></li>
+          <a
+            href="mailto:info@thecoonpany.dev"
+            target="_black"
+            style={{ "--icon": "url(/icon/mail.svg)" }}></a>
+        </li>
+      </ul>
+    </nav>
+  </ContentLayout>
 </footer>
-
 
 <style lang="scss">
   footer#app-footer {
+    background-color: #111;
+    min-height: 3.5rem;
+    inset-inline: 0;
+    padding-block: 0.5rem;
 
+    nav {
+      color: #ddd;
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: center;
+
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        gap: 0.25rem;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #ddd;
+          text-decoration: none;
+          font-size: 2rem;
+
+          &::after {
+            content: "";
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            mask: var(--icon) center/1em no-repeat;
+            background-color: currentColor;
+          }
+        }
+      }
+    }
   }
 </style>

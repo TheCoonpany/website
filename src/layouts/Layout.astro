@@ -1,34 +1,75 @@
 ---
-// import AppHeader from "../components/AppHeader.astro";
-// import AppFooter from "../components/AppFooter.astro";
+import { ClientRouter } from "astro:transitions";
+
+import AppHeader from "../components/AppHeader.astro";
+import AppFooter from "../components/AppFooter.astro";
 
 import "../styles/colors.scss";
+import "../styles/shadows.scss";
 import "../styles/fonts.scss";
+import "../styles/navigation.scss";
+
+import type { Page_Meta } from "../locales/_def.types";
+import type { Locale } from "../helpers/locales";
+
+interface Props {
+	meta: Page_Meta & { url: string };
+	lang: Locale;
+}
+
+const { meta, lang } = Astro.props;
+
+const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>The Coonpany</title>
+		<title>{meta.title}</title>
+		<meta name="description" content={meta.description} />
+		{
+			meta.keywords && (
+				<meta name="keywords" content={meta.keywords?.join(", ")} />
+			)
+		}
+		<link rel="canonical" href={`${SITE_URL}${meta.url}`} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Special+Elite&display=swap"
 			rel="stylesheet"
 		/>
+
+		<ClientRouter />
 	</head>
 
 	<body>
-		<!-- <AppHeader /> -->
-		<slot />
-		<!-- <AppFooter /> -->
+		<AppHeader lang={lang} />
+		<main id="app-content">
+			<div>
+				<slot />
+			</div>
+			<AppFooter lang={lang} />
+		</main>
 	</body>
 </html>
+
+<style lang="scss">
+	#app-content {
+		overflow: hidden scroll;
+		display: grid;
+		grid-template-rows: 1fr max-content;
+		width: 100dvw;
+		scrollbar-color: white #333;
+		scrollbar-width: thin;
+		box-sizing: content-box;
+	}
+</style>
 
 <style is:global lang="scss">
 	html,
@@ -39,10 +80,18 @@ import "../styles/fonts.scss";
 	}
 
 	body {
-		overflow: hidden scroll;
+		overflow: hidden;
 		background-color: #e3e0d5;
 		color: #222;
 		font-family: var(--f-font);
+		display: grid;
+		grid-template-rows: max-content 1fr;
+		height: 100dvh;
+		min-width: 360px;
+
+		&:has(#wip) :is(#app-header, #app-footer) {
+			display: none;
+		}
 	}
 
 	* {

@@ -1,0 +1,28 @@
+---
+import type { Icon_Name } from "./Icon";
+
+interface Props {
+  icon: Icon_Name;
+}
+
+const { icon } = Astro.props;
+---
+
+<i data-el="icon" style={{ "--icon": `url(/icon/${icon}.svg)` }}></i>
+
+<style lang="scss">
+  i {
+    font-size: var(--icon_size, 1.5rem);
+    display: grid;
+    place-items: center;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      mask: var(--icon) center/1em no-repeat;
+      background-color: currentColor;
+    }
+  }
+</style>

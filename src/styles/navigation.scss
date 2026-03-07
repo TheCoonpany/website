@@ -1,0 +1,18 @@
+[data-page] {
+  position: fixed;
+
+  ~*:has([data-current-page]) {
+    left: -100dvw;
+  }
+}
+
+[data-current-page] {
+  position: relative;
+
+}
+
+*:has([data-current-page]) {
+  ~[data-page] {
+    right: -100dvw;
+  }
+}

@@ -1,0 +1,152 @@
+---
+import type { Icon_Name } from "../elements/Icon";
+import Icon from "../elements/Icon.astro";
+import type { Nav_Entry } from "../helpers/sitemap";
+
+interface Props {
+  links: readonly {
+    name: string;
+    page: Nav_Entry;
+    href: string;
+  }[];
+}
+
+const ICON = {
+  consultancy: "consultancy",
+  education: "education",
+  development: "terminal",
+  about_us: "clip",
+} as const satisfies Record<Nav_Entry, Icon_Name>;
+
+const { links } = Astro.props;
+---
+
+<ul>
+  {
+    links.map(({ name, page, href }) => (
+      <li data-to={page}>
+        <a href={href} title={name} aria-label={name}>
+          <Icon icon={ICON[page]} />
+          <span>{name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  @use "./AppHeader.FolderLinks.scss" as *;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    padding-inline: 0.5rem 1.5rem;
+    overflow: clip;
+  }
+
+  li {
+    position: relative;
+    margin-right: -1rem;
+    height: 3.5rem;
+    display: inline-block;
+    overflow-y: clip;
+
+    a {
+      --icon_size: 1.25rem;
+      display: grid;
+      font-size: 1rem;
+      place-items: center;
+      grid-template-columns: max-content max-content;
+      background-color: #f4e3c3;
+      padding: 0.75rem 1.75rem 1.5rem;
+      border-radius: 0.75rem 0.75rem 0 0;
+      color: #111;
+      transform: translatey(1.2rem);
+      box-shadow: var(--shadow-3);
+      text-decoration: none;
+      transition:
+        transform 0.2s ease-in-out 0.1s,
+        rotate 0.2s ease-in-out 0.1s,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+
+      span {
+        display: inline-block;
+        alignment-baseline: central;
+        padding-top: 0.3rem;
+      }
+
+      &:focus,
+      &:hover {
+        transform: translatey(0.5rem);
+        box-shadow: var(--shadow-5);
+        color: #222;
+        outline: none;
+        rotate: 0deg !important;
+      }
+    }
+
+    @each $service, $deg in $services {
+      &[data-to="#{$service}"] a {
+        rotate: $deg;
+      }
+    }
+  }
+</style>
+
+<style is:global lang="scss">
+  @use "./AppHeader.FolderLinks.scss" as *;
+
+  header#app-header {
+    @each $service, $deg in $services {
+      &:has(~ #app-content [data-current-page="#{$service}"])
+        [data-to="#{$service}"]
+        a {
+        color: #222;
+        rotate: 0deg !important;
+        transform: translatey(0.5rem);
+        box-shadow: var(--shadow-5);
+      }
+    }
+
+    ul {
+      [data-el="icon"] {
+        margin-right: 0.5rem;
+      }
+      @media screen and (width < 1000px) {
+        [data-el="icon"] {
+          display: none;
+        }
+      }
+
+      @media screen and (width < 900px) {
+        a {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media screen and (width < 700px) {
+        li {
+          margin-right: -0.5rem;
+        }
+        [data-el="icon"] {
+          --icon_size: 1.5rem;
+          display: unset;
+          margin-right: 0;
+        }
+        span {
+          display: none;
+        }
+      }
+
+      @media screen and (width < 460px) {
+        a {
+          padding: 0.75rem 1.25rem 1.5rem;
+        }
+      }
+    }
+  }
+</style>

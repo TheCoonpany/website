@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-color: #e3e0d5;
+  color: #222;
+  font-family: var(--f-font);
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  height: 100dvh;
+  min-width: 360px;
+
+  &:has(#wip) :is(#app-header, #app-footer) {
+    display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

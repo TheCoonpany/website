@@ -8,6 +8,7 @@ import "../styles/colors.scss";
 import "../styles/shadows.scss";
 import "../styles/fonts.scss";
 import "../styles/navigation.scss";
+import "./Layout.scss";
 
 import type { Page_Meta } from "../locales/_def.types";
 import type { Locale } from "../helpers/locales";
@@ -68,38 +69,11 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 		scrollbar-color: white #333;
 		scrollbar-width: thin;
 		box-sizing: content-box;
-	}
-</style>
 
-<style is:global lang="scss">
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	body {
-		overflow: hidden;
-		background-color: #e3e0d5;
-		color: #222;
-		font-family: var(--f-font);
-		display: grid;
-		grid-template-rows: max-content 1fr;
-		height: 100dvh;
-		min-width: 360px;
-
-		&:has(#wip) :is(#app-header, #app-footer) {
-			display: none;
+		&:has(#wip) {
+			overflow: hidden;
 		}
 	}
-
-	* {
-		box-sizing: border-box;
-	}
-
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
 </style>
+
+<script src="./Layout.ts"></script>

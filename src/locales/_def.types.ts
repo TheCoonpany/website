@@ -17,6 +17,15 @@ export interface LocalesDict {
       subHeader: string;
       description: string;
     };
+    services: {
+      header: string;
+      services: readonly {
+        urlKey: Route;
+        header: string;
+        description: string;
+        action: string;
+      }[];
+    };
   },
   education: {
     meta: Page_Meta;
@@ -43,6 +52,8 @@ export interface LocalesDict {
     header: string;
   };
 }
+
+export type Route = keyof Omit<LocalesDict, "_shared" | "app">;
 
 export interface Page_Meta {
   readonly title: string;

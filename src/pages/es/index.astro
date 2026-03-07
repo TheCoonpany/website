@@ -1,14 +1,15 @@
 ---
-import Home_View from "../../views/Home.view.astro";
+import Home_View from "../../views/Home/_.view.astro";
 import Layout from "../../layouts/Layout.astro";
 
 import { getPageI18n } from "../../helpers/locales";
 
-const { lang, i18n } = getPageI18n(import.meta.url);
-
-const locales = i18n.home;
+const i18n = getPageI18n(import.meta.url, "home");
 ---
 
-<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang={lang}>
-	<Home_View locales={locales} />
+<Layout
+	meta={{ ...i18n.locales.meta, url: Astro.url.pathname }}
+	lang={i18n.lang}
+>
+	<Home_View {...i18n} />
 </Layout>

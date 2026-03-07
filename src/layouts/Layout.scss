@@ -1,0 +1,45 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-color: #e3e0d5;
+  color: #222;
+  font-family: var(--f-font);
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  height: 100dvh;
+  max-width: 100dvw;
+
+  &:has(#wip) :is(#app-header, #app-footer) {
+    display: none;
+  }
+
+  @media screen and (width < 360px) {
+    overflow-x: auto;
+  }
+}
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+img {
+  content-visibility: auto;
+}

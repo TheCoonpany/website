@@ -1,0 +1,130 @@
+---
+import ContentLayout from "../../elements/ContentLayout.astro";
+import ServiceImg from "../../assets/consultancy.jpg";
+import CorkBg from "../../assets/cork.jpg";
+import Button from "../../elements/Button.astro";
+import { ROUTES } from "../../helpers/sitemap";
+
+import type { Locale } from "../../helpers/locales";
+import type { LocalesDict } from "../../locales/_def.types";
+
+interface Props {
+  lang: Locale;
+  locales: LocalesDict["home"];
+}
+
+const { locales, lang } = Astro.props;
+
+const SERVICES = locales.services.services.map((service) => ({
+  ...service,
+  href: ROUTES[lang][service.urlKey]?.url,
+}));
+---
+
+<section id="services">
+  <picture>
+    <img src={CorkBg.src} alt="Cork board" loading="lazy" />
+  </picture>
+
+  <ContentLayout>
+    <h2>{locales.services.header}</h2>
+
+    <ul>
+      {
+        SERVICES.map((service) => (
+          <li>
+            <a
+              href={service.href}
+              class="service-card"
+              data-transition-link
+              data-transition-name={service.href.split("/").pop()}
+            >
+              <article>
+                <picture>
+                  <img src={ServiceImg.src} alt="" />
+                </picture>
+                <main>
+                  <h3>{service.header}</h3>
+                  <p>{service.description}</p>
+                </main>
+
+                <Button text={service.action} />
+              </article>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </ContentLayout>
+</section>
+
+<style lang="scss">
+  #services {
+    position: relative;
+    padding-block: 2rem 2rem;
+
+    > picture {
+      position: absolute;
+      background-color: #e7a16e;
+      inset: 0;
+      clip-path: polygon(
+        0% 100%,
+        0% 0%,
+        100% var(--blueprint__skew),
+        100% calc(100% - 3rem)
+      );
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    h2 {
+      color: #fff;
+      text-shadow: var(--shadow-1);
+      font-size: 2.5rem;
+      margin-top: 0;
+      z-index: 1;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+
+      li {
+        flex: 1 1 0px;
+      }
+
+      article {
+        box-shadow: var(--shadow-3);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        height: 100%;
+        display: grid;
+        grid-template-rows: max-content 1fr max-content;
+        background-color: #eee;
+
+        > main {
+          height: 100%;
+        }
+
+        > picture {
+          display: grid;
+          place-items: center;
+
+          img {
+            width: 10rem;
+            aspect-ratio: 1;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+</style>

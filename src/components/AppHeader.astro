@@ -1,11 +1,11 @@
 ---
-import { NAV_LABELS } from "../helpers/sitemap";
+import { ROUTES } from "../helpers/sitemap";
 import ContentLayout from "../elements/ContentLayout.astro";
 import FolderLinks from "./AppHeader.FolderLinks.astro";
 import Img from "../assets/raccoon_3.png";
 import * as LOCALES from "../locales";
 
-import type { Locale } from "../helpers/locales";
+import { AVAILABLE_LOCALES, type Locale } from "../helpers/locales";
 import { objectEntries } from "../_shared/helpers";
 
 interface Props {
@@ -16,11 +16,18 @@ const { lang } = Astro.props;
 
 const locales = LOCALES[lang].app.header;
 
-const entries = objectEntries(NAV_LABELS[lang]).map(([page, value]) => ({
+const entries = objectEntries(ROUTES[lang]).map(([page, value]) => ({
   page,
   name: value.label,
   href: value.url,
 }));
+
+function localizeLang(value: Locale) {
+  const transLang = new Intl.DisplayNames(lang, {
+    type: "language",
+  }).of(value);
+  return `${locales.switchLang} ${transLang}`;
+}
 ---
 
 <header id="app-header">
@@ -33,40 +40,59 @@ const entries = objectEntries(NAV_LABELS[lang]).map(([page, value]) => ({
 
       <FolderLinks links={entries} />
 
-      <div id="lang-selector">
-        <a
-          href={`/${lang === "es" ? "en" : "es"}`}
-          title={locales.switchLang}
-          aria-label={locales.switchLang}
-        >
-          {lang === "es" ? "EN" : "ES"}
-        </a>
-      </div>
+      <ul id="lang-selector">
+        {
+          AVAILABLE_LOCALES.map((locale) => (
+            <li>
+              <a
+                tabindex={locale === lang ? -1 : undefined}
+                href={`/${locale}`}
+                title={localizeLang(locale)}
+                aria-label={localizeLang(locale)}
+                aria-current={locale === lang || undefined}
+              >
+                {locale.toUpperCase()}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
   </ContentLayout>
 </header>
 
 <style lang="scss">
+  $height: 4.5rem;
+  $skew: var(--header__skew);
+
   header#app-header {
+    --_margins: 1.5rem;
     background-color: #111;
     inset-inline: 0;
+    clip-path: polygon(0% calc(100% - #{$skew}), 0% 0%, 100% 0, 100% 100%);
+
+    * {
+      user-select: none;
+    }
 
     nav {
       display: grid;
-      grid-template-columns: repeat(3, max-content);
-      align-items: center;
+      grid-template-columns: max-content 1fr max-content;
+      align-items: flex-start;
       width: 100%;
-      height: 3.5rem;
+      height: calc($height + #{$skew});
       justify-content: space-between;
+      color: #ddd;
+      padding-top: 0.5rem;
     }
 
-    a {
-      color: #ddd;
-      text-decoration: none;
+    #logo,
+    #lang-selector {
+      margin-bottom: #{$skew};
     }
 
     #logo {
-      margin-right: 1.5rem;
+      margin-right: var(--_margins);
       display: grid;
       grid-template-columns: repeat(2, max-content);
       align-items: center;
@@ -81,35 +107,51 @@ const entries = objectEntries(NAV_LABELS[lang]).map(([page, value]) => ({
         font-size: 1.5rem;
         padding: 0.5rem;
       }
+    }
 
-      @media screen and (width < 1200px) {
-        span {
-          font-size: 1.25rem;
+    #lang-selector {
+      margin: 0 0 0 var(--_margins);
+      font-size: 1.25rem;
+      padding: 0.5rem;
+      display: grid;
+      gap: 0.5rem;
+      list-style-type: none;
+
+      a {
+        &[aria-current] {
+          pointer-events: none;
+          color: #888;
         }
       }
+      li + li {
+        border-top: 2px solid #ddd;
+        padding-top: 0.5rem;
+      }
+    }
 
-      @media screen and (width < 900px) {
-        margin-right: 0.5rem;
+    @media screen and (width < 1200px) {
+      #logo span {
+        font-size: 1.25rem;
+      }
+      #lang-selector {
+        font-size: 1rem;
+      }
+    }
 
+    @media screen and (width < 900px) {
+      --_margins: 1rem;
+    }
+
+    @media screen and (width < 800px) {
+      #logo {
         span {
           display: none;
         }
       }
     }
 
-    #lang-selector {
-      margin-left: 1.5rem;
-      margin-top: 0.3em;
-      font-size: 1.25rem;
-      padding: 0.5rem;
-
-      @media screen and (width < 1200px) {
-        font-size: 1rem;
-      }
-
-      @media screen and (width < 900px) {
-        margin-left: 0.5rem;
-      }
+    @media screen and (width < 400px) {
+      --_margins: 0.5rem;
     }
   }
 </style>

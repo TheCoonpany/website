@@ -1,0 +1,95 @@
+---
+import ContentLayout from "../../elements/ContentLayout.astro";
+import Blueprint from "../../assets/blueprint.jpg";
+
+import type { LocalesDict } from "../../locales/_def.types";
+
+interface Props {
+  locales: LocalesDict["home"];
+}
+
+const { locales } = Astro.props;
+---
+
+<section id="hero">
+  <picture>
+    <img src={Blueprint.src} alt="Blueprint" loading="lazy" />
+  </picture>
+  <ContentLayout>
+    <div id="hero-content">
+      <hgroup>
+        <h1>{locales.hero.header}</h1>
+        <h2>{locales.hero.subHeader}</h2>
+      </hgroup>
+      <p>{locales.hero.description}</p>
+    </div>
+  </ContentLayout>
+</section>
+
+<style lang="scss">
+  #hero {
+    clip-path: polygon(
+      0% calc(100% - var(--blueprint__skew)),
+      0% 0%,
+      100% var(--header__skew),
+      100% 100%
+    );
+    background-color: #061f38;
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    margin-bottom: calc(var(--blueprint__skew) * -1);
+    overflow: visible;
+
+    > picture {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+
+      > img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-position: 60% 20%;
+        filter: brightness(0.5);
+      }
+    }
+  }
+
+  #hero-content {
+    color: #ddd;
+    padding: 1rem 3rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
+    max-width: 35rem;
+
+    :is(h1, h2) {
+      margin-block: 0.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-top: 0.25rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  }
+</style>
+
+<style is:global lang="scss">
+  #hero {
+    [data-el="content-layout"] {
+      position: relative;
+      height: 100%;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: calc(var(--blueprint__skew) + 0.5rem);
+    }
+  }
+</style>

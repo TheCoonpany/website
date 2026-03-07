@@ -1,5 +1,6 @@
 import path from "path";
 import * as LOCALES from "../locales";
+import type { Route } from '../locales/_def.types';
 
 export const AVAILABLE_LOCALES = ['en', 'es'] as const;
 
@@ -18,14 +19,14 @@ export function getPageLang(url: string): Locale {
     : DEFAULT_LOCALE;
 }
 
-export function getPageI18n(url: string): {
+export function getPageI18n<T extends Route>(url: string, route: T): {
   lang: Locale;
-  i18n: typeof LOCALES[Locale];
+  locales: typeof LOCALES[Locale][T];
 } {
   const lang = getPageLang(url);
 
   return {
     lang,
-    i18n: LOCALES[lang]
+    locales: LOCALES[lang][route]
   };
 }

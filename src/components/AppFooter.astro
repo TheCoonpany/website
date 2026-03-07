@@ -4,6 +4,7 @@ import Icon from "../elements/Icon.astro";
 import ContentLayout from "../elements/ContentLayout.astro";
 import * as LOCALES from "../locales";
 
+import type { Icon_Name } from "../elements/Icon";
 import type { Locale } from "../helpers/locales";
 
 interface Props {
@@ -13,6 +14,33 @@ interface Props {
 const { lang } = Astro.props;
 
 const locales = LOCALES[lang].app.footer;
+
+const SOCIAL = [
+  {
+    name: "GitHub",
+    href: "https://github.com/TheCoonpany",
+    icon: "github",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/the-coonpany",
+    icon: "linkedin",
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@TheCoonpany",
+    icon: "youtube",
+  },
+  {
+    name: "Email",
+    href: "mailto:info@thecoonpany.dev",
+    icon: "mail",
+  },
+] as const satisfies readonly {
+  name: string;
+  href: string;
+  icon: Icon_Name;
+}[];
 ---
 
 <footer id="app-footer">
@@ -27,22 +55,15 @@ const locales = LOCALES[lang].app.footer;
       </a>
 
       <ul id="social">
-        <li>
-          <a href="https://github.com/TheCoonpany" target="_black">
-            <Icon icon="github" />
-          </a>
-          <li></li>
-          <a
-            href="https://www.linkedin.com/company/the-coonpany"
-            target="_black"
-          >
-            <Icon icon="linkedin" />
-          </a>
-          <li></li>
-          <a href="mailto:info@thecoonpany.dev" target="_black">
-            <Icon icon="mail" />
-          </a>
-        </li>
+        {
+          SOCIAL.map(({ name, href, icon }) => (
+            <li>
+              <a href={href} target="_blank" title={name} aria-label={name}>
+                <Icon icon={icon} />
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </ContentLayout>
@@ -78,23 +99,16 @@ const locales = LOCALES[lang].app.footer;
         }
       }
 
-      a {
-        text-decoration: none;
-        color: #ddd;
-      }
-
       #social {
         list-style: none;
         display: flex;
         flex-direction: row;
         margin: 0;
         padding: 0;
-        gap: 0.25rem;
+        gap: 0.5rem;
 
         a {
-          color: #ddd;
-          text-decoration: none;
-          --icon_size: 2rem;
+          --icon_size: 1.75rem;
         }
       }
 

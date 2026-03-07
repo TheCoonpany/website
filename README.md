@@ -10,9 +10,6 @@
   <a href="https://github.com/TheCoonpany/website" target="_blank">
     <img src="https://img.shields.io/badge/github-repo-blue?style=for-the-badge" alt="GitHub"/>
   </a>
-  <a href="http://opensource.org/licenses/ISC" target="_blank">
-  <img src=https://img.shields.io/npm/l/@zurich/dev-utils?style=for-the-badge&logo=cachet&logoColor=fff" alt="License"/>
-  </a>
 </p>
 
 </center>

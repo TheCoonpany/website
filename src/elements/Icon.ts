@@ -6,6 +6,7 @@ export const ICON = [
   'consultancy',
   'clip',
   'terminal',
+  'youtube',
   'label',
 ] as const satisfies string[];
 

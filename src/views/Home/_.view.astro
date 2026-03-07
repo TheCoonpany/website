@@ -1,0 +1,31 @@
+---
+import type { LocalesDict } from "../../locales/_def.types";
+import type { Locale } from "../../helpers/locales";
+import Hero from "./Hero.astro";
+import Services from "./Services.astro";
+
+interface Props {
+  lang: Locale;
+  locales: LocalesDict["home"];
+}
+
+const props = Astro.props;
+---
+
+<div>
+  <main data-current-page="home" transition:name="home">
+    <Hero {...props} />
+    <Services {...props} />
+  </main>
+</div>
+
+<div data-page transition:name="consultancy"></div>
+<div data-page transition:name="development"></div>
+<div data-page transition:name="education"></div>
+<div data-page transition:name="about_us"></div>
+
+<style lang="scss">
+  [data-current-page="home"] {
+    --blueprint__skew: 2rem;
+  }
+</style>

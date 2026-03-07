@@ -14,16 +14,18 @@ const $props = Astro.props;
 
 <style lang="scss">
   button[data-el="button"] {
-    --_color: var(--x-button--color, #21ebff);
+    --_color: var(--button__color, #ddd);
     position: relative;
     cursor: pointer;
     width: max-content;
+    border-radius: 0.25rem;
 
     color: var(--_color);
     padding: 0;
     border: none;
-    background-color: transparent;
+    background-color: #0b3460;
     transition: all 0.3s ease;
+    border: 2px solid #0b3460;
 
     &,
     > span {
@@ -32,7 +34,7 @@ const $props = Astro.props;
         position: absolute;
         content: "";
         background: var(--_color);
-        box-shadow: 0 0 10px var(--_color);
+        box-shadow: 0 0 0 var(--_color);
         transition: all 0.3s ease;
       }
     }
@@ -40,6 +42,12 @@ const $props = Astro.props;
     &:focus {
       --_color: #f88c07;
       outline: none;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: #104884;
+      border-color: #104884;
     }
 
     &:focus,

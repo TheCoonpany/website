@@ -1,5 +1,7 @@
 [data-page] {
   position: fixed;
+  height: 100dvh;
+  width: 0;
 
   ~*:has([data-current-page]) {
     left: -100dvw;

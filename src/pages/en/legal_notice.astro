@@ -4,11 +4,12 @@ import Layout from "../../layouts/Layout.astro";
 
 import { getPageI18n } from "../../helpers/locales";
 
-const { lang, i18n } = getPageI18n(import.meta.url);
-
-const locales = i18n.legal_notice;
+const i18n = getPageI18n(import.meta.url, "legal_notice");
 ---
 
-<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang={lang}>
-  <Legal_View locales={locales} />
+<Layout
+  meta={{ ...i18n.locales.meta, url: Astro.url.pathname }}
+  lang={i18n.lang}
+>
+  <Legal_View {...i18n} />
 </Layout>

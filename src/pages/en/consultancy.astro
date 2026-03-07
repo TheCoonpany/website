@@ -4,11 +4,12 @@ import Consultancy_View from "../../views/Consultancy.view.astro";
 
 import { getPageI18n } from "../../helpers/locales";
 
-const { lang, i18n } = getPageI18n(import.meta.url);
-
-const locales = i18n.consultancy;
+const i18n = getPageI18n(import.meta.url, "consultancy");
 ---
 
-<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang={lang}>
-  <Consultancy_View locales={locales} />
+<Layout
+  meta={{ ...i18n.locales.meta, url: Astro.url.pathname }}
+  lang={i18n.lang}
+>
+  <Consultancy_View {...i18n} />
 </Layout>

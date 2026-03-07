@@ -4,10 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import AppHeader from "../components/AppHeader.astro";
 import AppFooter from "../components/AppFooter.astro";
 
-import "../styles/colors.scss";
-import "../styles/shadows.scss";
-import "../styles/fonts.scss";
-import "../styles/navigation.scss";
+import "../styles/index.scss";
 import "./Layout.scss";
 
 import type { Page_Meta } from "../locales/_def.types";
@@ -65,13 +62,19 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 		overflow: hidden scroll;
 		display: grid;
 		grid-template-rows: 1fr max-content;
-		width: 100dvw;
+		min-width: 100dvw;
 		scrollbar-color: white #333;
 		scrollbar-width: thin;
 		box-sizing: content-box;
+		margin-top: calc(var(--header__skew) * -1);
 
 		&:has(#wip) {
 			overflow: hidden;
+		}
+
+		> div {
+			display: grid;
+			grid-auto-flow: column;
 		}
 	}
 </style>

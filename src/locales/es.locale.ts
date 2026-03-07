@@ -6,7 +6,7 @@ export const es = {
   },
   app: {
     header: {
-      switchLang: 'Cambiar idioma'
+      switchLang: 'Cambiar idioma a'
     },
     footer: {
       madeWith: 'Hecho con'
@@ -21,6 +21,29 @@ export const es = {
       header: 'The Coonpany',
       subHeader: 'Consultoría, Desarrollo y Formación en Software',
       description: 'Somos una empresa de consultoría de software enfocada en brindar servicios de alta calidad en desarrollo de software, formación y consultoría. Nos apasiona la tecnología y estamos comprometidos a ayudar a nuestros clientes a alcanzar sus objetivos.'
+    },
+    services: {
+      header: 'Nuestros servicios',
+      services: [
+        {
+          urlKey: 'consultancy',
+          header: 'Servicios de consultoría',
+          description: 'Servicios de consultoría en software',
+          action: 'Ver más'
+        },
+        {
+          urlKey: 'development',
+          header: 'Desarrollos a medida',
+          description: 'Desarrollo de aplicaciones y soluciones de software',
+          action: 'Ver más'
+        },
+        {
+          urlKey: 'education',
+          header: 'Programas de formación técnica',
+          description: 'Programas de formación en desarrollo de software',
+          action: 'Ver más'
+        }
+      ]
     }
   },
   education: {

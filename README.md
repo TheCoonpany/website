@@ -1,5 +1,3 @@
-<center>
-
 # Website of The Coonpany
 
 ![TheCoonpany](./src/assets/raccoon_3_rect.jpg)
@@ -11,8 +9,6 @@
     <img src="https://img.shields.io/badge/github-repo-blue?style=for-the-badge" alt="GitHub"/>
   </a>
 </p>
-
-</center>
 
 ...
 

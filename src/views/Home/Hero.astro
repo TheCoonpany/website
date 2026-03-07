@@ -16,7 +16,7 @@ const { locales } = Astro.props;
     <img src={Blueprint.src} alt="Blueprint" loading="lazy" />
   </picture>
   <ContentLayout>
-    <div id="hero-content">
+    <div id="hero-content" data-parallax>
       <hgroup>
         <h1>{locales.hero.header}</h1>
         <h2>{locales.hero.subHeader}</h2>
@@ -28,23 +28,23 @@ const { locales } = Astro.props;
 
 <style lang="scss">
   #hero {
-    clip-path: polygon(
-      0% calc(100% - var(--blueprint__skew)),
-      0% 0%,
-      100% var(--header__skew),
-      100% 100%
-    );
-    background-color: #061f38;
     position: relative;
     width: 100%;
-    height: 30rem;
-    margin-bottom: calc(var(--blueprint__skew) * -1);
+    height: clamp(30rem, calc(50rem - 50dvw), 50rem);
     overflow: visible;
+    margin-bottom: calc(var(--blueprint__skew) * -1);
 
     > picture {
       position: absolute;
       inset: 0;
       overflow: hidden;
+      background-color: #061f38;
+      clip-path: polygon(
+        0% calc(100% - var(--blueprint__skew)),
+        0% 0%,
+        100% var(--header__skew),
+        100% 100%
+      );
 
       > img {
         object-fit: cover;
@@ -58,7 +58,7 @@ const { locales } = Astro.props;
 
   #hero-content {
     color: #ddd;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 0.75rem;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
     background-color: rgba(0, 0, 0, 0.6);

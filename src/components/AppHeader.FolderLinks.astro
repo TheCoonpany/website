@@ -49,8 +49,10 @@ const HEADER_LINKS = objectKeys(HEADER_ICONS).map((key) => {
   @use "./AppHeader.FolderLinks.scss" as *;
 
   $bg: #f4e3c3;
+  $anim: 0.3s;
 
   ul#folder-links {
+    --step: 0.5rem;
     display: flex;
     list-style: none;
     margin: 0;
@@ -77,13 +79,13 @@ const HEADER_LINKS = objectKeys(HEADER_ICONS).map((key) => {
         padding: 0.75rem 1.75rem 3rem;
         border-radius: 0.75rem 0.75rem 0 0;
         color: #111;
-        transform: translatey(calc(1.2rem + (var(--item) * 0.25rem)));
+        transform: translatey(calc(1.2rem + (var(--item) * var(--step))));
         box-shadow: var(--shadow-3);
         transition:
-          transform 0.2s ease-in-out 0.1s,
-          rotate 0.2s ease-in-out 0.1s,
-          color 0.2s ease,
-          box-shadow 0.2s ease;
+          transform $anim ease-in-out,
+          rotate $anim ease-in-out,
+          color $anim ease,
+          box-shadow $anim ease;
 
         span {
           display: inline-block;
@@ -91,18 +93,32 @@ const HEADER_LINKS = objectKeys(HEADER_ICONS).map((key) => {
           padding-top: 0.3rem;
         }
 
-        &::after {
+        &::after,
+        &::before {
           content: "";
           position: absolute;
-          top: 2.75rem;
-          right: -0.5rem;
           display: inline-block;
+          transition: transform $anim ease-in-out;
+          box-shadow: var(--shadow-5);
+        }
+
+        &::after {
+          top: 2.75rem;
           height: 4rem;
           width: 50rem;
           border-top-left-radius: 0.5rem;
           border-top-right-radius: 0.5rem;
+          right: -0.5rem;
           background-color: $bg;
-          box-shadow: var(--shadow-5);
+          transform-origin: 50% 100%;
+        }
+        &::before {
+          width: 1.5rem;
+          left: 0;
+          height: 5rem;
+          top: 3rem;
+          background-color: #b02727;
+          clip-path: polygon(0% 0%, 50% 5%, 100% 0%, 100% 100%, 0 100%);
         }
       }
 
@@ -127,9 +143,16 @@ const HEADER_LINKS = objectKeys(HEADER_ICONS).map((key) => {
       #folder-links [data-to] a:hover {
         color: #222;
         rotate: -0.2deg !important;
-        transform: translatey(calc(0.25rem + (var(--item) * 0.2rem)));
+        transform: translatey(calc(0.25rem + (var(--item) * var(--step))));
         box-shadow: var(--shadow-5);
         outline: none;
+
+        &::after {
+          transform: rotateX(45deg);
+        }
+        &::before {
+          transform: translatey(-1.5rem) rotatez(-10deg);
+        }
       }
     }
 

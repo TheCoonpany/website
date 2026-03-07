@@ -10,7 +10,8 @@
 
 [data-current-page] {
   position: relative;
-
+  perspective: 100px;
+  perspective-origin: center center;
 }
 
 *:has([data-current-page]) {

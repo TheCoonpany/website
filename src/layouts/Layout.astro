@@ -61,9 +61,10 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 	#app-content {
 		overflow: hidden scroll;
 		display: grid;
+		position: relative;
 		grid-template-rows: 1fr max-content;
 		min-width: 100dvw;
-		scrollbar-color: white #333;
+		scrollbar-color: #e2ff62 #333;
 		scrollbar-width: thin;
 		box-sizing: content-box;
 		margin-top: calc(var(--header__skew) * -1);

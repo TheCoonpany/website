@@ -1,0 +1,27 @@
+@keyframes parallax {
+  from {
+    transform: translateY(10rem);
+  }
+
+  to {
+    transform: translateY(-10rem);
+  }
+}
+
+[data-parallax] {
+  animation: parallax linear;
+  animation-timeline: view();
+  animation-range: entry 0 cover 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax] {
+    animation: none;
+  }
+}
+
+body[data-no-motion] {
+  [data-parallax] {
+    animation: none;
+  }
+}

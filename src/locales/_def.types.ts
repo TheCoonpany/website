@@ -2,8 +2,21 @@ export interface LocalesDict {
   _shared: {
 
   },
+  app: {
+    header: {
+      switchLang: string;
+    },
+    footer: {
+      madeWith: string;
+    };
+  };
   home: {
     meta: Page_Meta;
+    hero: {
+      header: string;
+      subHeader: string;
+      description: string;
+    };
   },
   education: {
     meta: Page_Meta;
@@ -14,6 +27,18 @@ export interface LocalesDict {
     header: string;
   },
   consultancy: {
+    meta: Page_Meta;
+    header: string;
+  };
+  about_us: {
+    meta: Page_Meta;
+    header: string;
+  };
+  legal_notice: {
+    meta: Page_Meta;
+    header: string;
+  };
+  privacy_policy: {
     meta: Page_Meta;
     header: string;
   };

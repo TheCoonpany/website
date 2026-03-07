@@ -4,7 +4,7 @@ import ContentLayout from "../elements/ContentLayout.astro";
 import type { LocalesDict } from "../locales/_def.types";
 
 interface Props {
-  locales: LocalesDict["development"];
+  locales: LocalesDict["education"];
 }
 
 const { locales } = Astro.props;
@@ -12,9 +12,11 @@ const { locales } = Astro.props;
 
 <div data-page transition:name="home"></div>
 <div data-page transition:name="consultancy"></div>
+<div data-page transition:name="development"></div>
+<div data-page transition:name="education"></div>
 
 <ContentLayout>
-  <main data-current-page="development" transition:name="development">
+  <main data-current-page="about_us" transition:name="about_us">
     <h1>{locales.header}</h1>
 
     <p>
@@ -72,6 +74,3 @@ const { locales } = Astro.props;
     </p>
   </main>
 </ContentLayout>
-
-<div data-page transition:name="education"></div>
-<div data-page transition:name="about_us"></div>

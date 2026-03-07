@@ -21,6 +21,10 @@ export const NAV_LABELS = {
       url: `/es/formacion`,
       label: es.education.header,
     },
+    about_us: {
+      url: `/es/sobre_nosotros`,
+      label: es.about_us.header,
+    },
   },
   en: {
     consultancy: {
@@ -35,5 +39,11 @@ export const NAV_LABELS = {
       url: `/en/education`,
       label: en.education.header,
     },
+    about_us: {
+      url: `/en/about_us`,
+      label: en.about_us.header,
+    },
   },
 } as const satisfies Record<Locale, Record<string, SitemapEntry>>;
+
+export type Nav_Entry = keyof typeof NAV_LABELS[Locale];

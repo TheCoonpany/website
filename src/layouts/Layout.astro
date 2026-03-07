@@ -54,7 +54,7 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 			<div>
 				<slot />
 			</div>
-			<AppFooter />
+			<AppFooter lang={lang} />
 		</main>
 	</body>
 </html>
@@ -64,7 +64,10 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 		overflow: hidden scroll;
 		display: grid;
 		grid-template-rows: 1fr max-content;
-		min-height: 100%;
+		width: 100dvw;
+		scrollbar-color: white #333;
+		scrollbar-width: thin;
+		box-sizing: content-box;
 	}
 </style>
 

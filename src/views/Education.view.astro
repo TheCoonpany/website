@@ -1,5 +1,5 @@
 ---
-import ContentLayout from "../components/ContentLayout.astro";
+import ContentLayout from "../elements/ContentLayout.astro";
 
 import type { LocalesDict } from "../locales/_def.types";
 
@@ -73,3 +73,5 @@ const { locales } = Astro.props;
     </p>
   </main>
 </ContentLayout>
+
+<div data-page transition:name="about_us"></div>

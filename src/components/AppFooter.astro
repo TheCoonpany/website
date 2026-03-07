@@ -1,25 +1,47 @@
 ---
-import ContentLayout from "./ContentLayout.astro";
+import AstroLogo from "../assets/astro_logo.svg";
+import Icon from "../elements/Icon.astro";
+import ContentLayout from "../elements/ContentLayout.astro";
+import * as LOCALES from "../locales";
 
-interface Props {}
+import type { Locale } from "../helpers/locales";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const locales = LOCALES[lang].app.footer;
 ---
 
 <footer id="app-footer">
   <ContentLayout>
     <nav>
-      <p>The coonpany</p>
+      <p id="company">The Coonpany | {new Date().getFullYear()}</p>
 
-      <ul>
+      <a href="https://astro.build/" target="_blank" id="made-with-astro">
+        <span>{locales.madeWith}</span>
+        <img src={AstroLogo.src} alt="Astro logo" />
+        <span>Astro</span>
+      </a>
+
+      <ul id="social">
         <li>
-          <a
-            href="https://github.com/TheCoonpany"
-            target="_black"
-            style={{ "--icon": "url(/icon/github.svg)" }}></a>
+          <a href="https://github.com/TheCoonpany" target="_black">
+            <Icon icon="github" />
+          </a>
           <li></li>
           <a
-            href="mailto:info@thecoonpany.dev"
+            href="https://www.linkedin.com/company/the-coonpany"
             target="_black"
-            style={{ "--icon": "url(/icon/mail.svg)" }}></a>
+          >
+            <Icon icon="linkedin" />
+          </a>
+          <li></li>
+          <a href="mailto:info@thecoonpany.dev" target="_black">
+            <Icon icon="mail" />
+          </a>
         </li>
       </ul>
     </nav>
@@ -36,10 +58,32 @@ interface Props {}
     nav {
       color: #ddd;
       display: grid;
-      grid-template-columns: 1fr max-content;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      justify-content: space-between;
       align-items: center;
 
-      ul {
+      #company {
+        font-size: 0.9rem;
+      }
+
+      #made-with-astro {
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5ch;
+        img {
+          width: 1em;
+          height: 1em;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: #ddd;
+      }
+
+      #social {
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -48,20 +92,24 @@ interface Props {}
         gap: 0.25rem;
 
         a {
-          display: flex;
-          align-items: center;
           color: #ddd;
           text-decoration: none;
-          font-size: 2rem;
+          --icon_size: 2rem;
+        }
+      }
 
-          &::after {
-            content: "";
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            mask: var(--icon) center/1em no-repeat;
-            background-color: currentColor;
+      @media screen and (width < 900px) {
+        #made-with-astro {
+          font-size: 1rem;
+          span {
+            display: none;
           }
+        }
+        #company {
+          font-size: 0.8rem;
+        }
+        #social a {
+          --icon_size: 1.5rem;
         }
       }
     }

@@ -64,6 +64,7 @@ function localizeLang(value: Locale) {
 <style lang="scss">
   $height: 4.5rem;
   $skew: var(--header__skew);
+  $anim: 0.2s;
 
   header#app-header {
     --_margins: 1.5rem;
@@ -102,11 +103,29 @@ function localizeLang(value: Locale) {
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 50%;
+        transition:
+          outline $anim,
+          box-shadow $anim;
       }
       span {
         margin-top: 0.3em;
         font-size: 1.5rem;
         padding: 0.5rem;
+        transition:
+          color $anim,
+          text-shadow $anim;
+      }
+      &:focus {
+        outline: none;
+
+        img {
+          outline: 2px solid var(--neon_blue);
+          box-shadow: 0 0 10px var(--neon_blue);
+        }
+        span {
+          color: var(--neon_blue);
+          text-shadow: 0 0 10px var(--neon_blue);
+        }
       }
     }
 
@@ -119,9 +138,18 @@ function localizeLang(value: Locale) {
       list-style-type: none;
 
       a {
+        transition:
+          color $anim,
+          text-shadow $anim;
+
         &[aria-current] {
           pointer-events: none;
           color: #888;
+        }
+        &:focus {
+          outline: none;
+          color: var(--neon_blue);
+          text-shadow: 0 0 10px var(--neon_blue);
         }
       }
       li + li {

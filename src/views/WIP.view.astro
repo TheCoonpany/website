@@ -1,15 +1,14 @@
 ---
 import ContentLayout from "../elements/ContentLayout.astro";
 import Img from "../assets/raccoon_3.png";
+import Image from "../elements/Image.astro";
 ---
 
 <main id="wip">
 	<ContentLayout>
 		<main>
 			<h1>The<br />Coonpany</h1>
-			<picture>
-				<img src={Img.src} alt="Logo" />
-			</picture>
+			<Image image={Img} alt="Logo" />
 			<div>
 				<div>
 					{Array.from({ length: 10 }, () => <h3>Site under coonstruction</h3>)}

@@ -1,4 +1,5 @@
 ---
+import Card from "../../elements/Card.astro";
 import ContentLayout from "../../elements/ContentLayout.astro";
 
 import type { PageI18n_Props } from "../../locales";
@@ -16,58 +17,75 @@ const { locales } = Astro.props;
   <main data-current-page="education" transition:name="education">
     <h1>{locales.header}</h1>
 
+    <quoteblock>
+      "Dejad de leer manuales y empezad a ensuciaros las garras"
+    </quoteblock>
+
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-      vulputate venenatis eros. Aliquam sollicitudin ipsum aliquet enim commodo,
-      sed rhoncus dui congue. Mauris ut sollicitudin nibh, at ultrices ex. Proin
-      congue imperdiet nunc. In risus quam, consectetur non orci quis,
-      condimentum semper purus. Nam arcu ipsum, tristique ac mi at, maximus
-      maximus nunc. Aliquam turpis nunc, malesuada vitae hendrerit nec, congue
-      ac ligula. Quisque tempus mollis nibh eget malesuada. Proin convallis
-      ullamcorper tellus, nec interdum orci rutrum scelerisque. Nullam tellus
-      velit, rhoncus id nibh id, dignissim dignissim turpis. Donec faucibus
-      accumsan risus id pretium. Aenean consectetur, nulla vel blandit ultrices,
-      sem orci tempus lacus, in pharetra urna magna ac felis. Integer tincidunt
-      id libero ultricies porta. Fusce vitae sagittis enim.
+      La mayoría de los cursos de formación son como la comida de avión: vienen
+      en bandejas de plástico, no tienen sabor y te dejan con hambre a los diez
+      minutos. En The Coonpany, la formación es distinta. No os voy a leer
+      diapositivas en un proyector con la lente sucia.
     </p>
+
     <p>
-      Fusce vel orci semper, sodales orci ac, sollicitudin ipsum. Vestibulum a
-      faucibus metus, in fringilla enim. Donec blandit urna quis arcu posuere,
-      quis viverra risus porta. Pellentesque rutrum sollicitudin eros non
-      semper. Praesent non vestibulum risus. Quisque ante libero, rutrum vel
-      pharetra sit amet, sagittis ac dui. Integer tristique aliquam risus, nec
-      mattis diam. Proin sed dui feugiat, consectetur massa a, porta augue.
-      Maecenas nunc mauris, sollicitudin ac ante ut, vulputate euismod arcu.
-      Curabitur sed lorem id velit tincidunt imperdiet non sed nunc. Donec
-      hendrerit est ut arcu cursus consectetur. Integer lobortis enim ac magna
-      tincidunt dignissim. Phasellus erat velit, cursus nec dolor non, dictum
-      consectetur nulla.
-    </p><p>
-      Donec consectetur ligula in leo euismod, eu consequat erat vehicula. Nulla
-      pharetra fermentum congue. Pellentesque eget accumsan quam. Fusce viverra
-      velit ac lacus imperdiet aliquam. Nunc faucibus pellentesque turpis id
-      convallis. Duis hendrerit leo lacus, vitae vehicula sapien gravida non.
-      Vivamus feugiat aliquam est, ut aliquet quam semper sollicitudin.
-      Pellentesque semper magna id enim convallis mattis.
-    </p><p>
-      Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Duis fringilla velit at tellus tincidunt, id euismod erat
-      pellentesque. Nullam porttitor, magna rutrum tincidunt ultrices, neque
-      sapien accumsan ligula, sit amet vulputate nisi lectus sed ipsum. Morbi
-      urna libero, cursus ut interdum a, sodales et nisl. Nam feugiat dapibus
-      elit pretium iaculis. Ut bibendum laoreet dolor, ac auctor tellus interdum
-      in. Nullam sodales suscipit convallis.
-    </p><p>
-      Morbi non fringilla nunc. Mauris eget diam at sem hendrerit faucibus. Cras
-      finibus tincidunt lectus, quis varius ipsum commodo nec. Proin molestie
-      elit a arcu mollis, vulputate gravida lacus iaculis. Mauris eget ante sit
-      amet ipsum auctor fermentum a at enim. Integer fermentum diam ac urna
-      rhoncus tempor. Praesent eu mi in neque egestas commodo et et magna.
-      Integer rhoncus risus non molestie rutrum. Aliquam erat volutpat.
-      Vestibulum id euismod lacus, sed fringilla nisl. Nulla dignissim dapibus
-      suscipit. Nullam semper scelerisque eleifend. Pellentesque neque massa,
-      mattis sed sollicitudin lobortis, commodo sit amet dui. Pellentesque quis
-      mattis quam, sit amet posuere nibh. Proin eget pulvinar leo.
+      Os voy a enseñar a sobrevivir en el ecosistema del desarrollo moderno. Os
+      daré las herramientas para que vuestro código deje de parecer un vertedero
+      y empiece a parecer una obra de ingeniería.
+    </p>
+
+    <h2>Mis "Talleres de Supervivencia":</h2>
+
+    <Card>
+      <h3>Entrenamiento Frontend (Artesanía Real)</h3>
+      No enseñamos "un poco de CSS". Enseñamos a dominar el layout, a entender cómo
+      respira el navegador y a construir componentes que no se rompan cuando cambias
+      una variable. El objetivo: Que tu equipo deje de copiar y pegar de Stack Overflow
+      y empiece a entender qué está pasando bajo el capó.
+    </Card>
+    <Card>
+      <h3>Mentoría de "Clean Code" para Mapaches</h3>
+      Escribir código que funciona es fácil. Escribir código que sea legible por otro
+      humano (o por ti mismo dentro de tres meses) es el verdadero reto. El objetivo:
+      Refactorización, patrones de diseño aplicados al mundo real y una obsesión enfermiza
+      por la legibilidad.
+    </Card>
+    <Card>
+      <h3>El Método "Coon-Optimizer" (Procesos y Eficiencia)</h3>
+      Enseño a vuestro equipo a usar la terminal, a dominar Git sin miedo y a configurar
+      entornos de desarrollo que no parezcan un rompecabezas de mil piezas. El objetivo:
+      Menos tiempo configurando, más tiempo creando. Si pueden automatizarlo, les
+      enseñaré cómo.
+    </Card>
+
+    <h2>Mi filosofía de enseñanza:</h2>
+    <p>
+      No creo en los certificados con sellos dorados. Creo en los proyectos que
+      funcionan.
+    </p>
+
+    <li>
+      Práctica obsesiva: Aquí se viene a picar código desde el minuto uno.
+    </li>
+    <li>
+      Sin filtros: Si algo es una mala práctica, lo diré. Aunque lo use Google.
+      Especialmente si lo usa Google.
+    </li>
+    <li>
+      Soporte post-traumático: No os abandono al terminar. Si una semana después
+      un bug os acecha, el mapache estará ahí (probablemente por una pequeña
+      cuota en granos de café).
+    </li>
+    <quoteblock>
+      "Un desarrollador que no deja de aprender es un desarrollador que no
+      termina en la papelera de reciclaje de la historia."
+    </quoteblock>
+
+    <h2>[ SOLICITAR PLAN DE ENTRENAMIENTO ]</h2>
+    <p>
+      ¿Quieres que tu equipo deje de ser un lastre y se convierta en una unidad
+      de élite? Dale al botón. Pero aviso: no acepto devoluciones si se vuelven
+      demasiado listos.
     </p>
   </main>
 </ContentLayout>

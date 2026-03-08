@@ -4,6 +4,7 @@ import Blueprint from "../../assets/blueprint.jpg";
 import TextInput from "../../elements/TextInput.astro";
 import TextArea from "../../elements/TextArea.astro";
 import Button from "../../elements/Button.astro";
+import Image from "../../elements/Image.astro";
 
 import type { LocalesDict } from "../../locales";
 
@@ -15,9 +16,7 @@ const { locales } = Astro.props;
 ---
 
 <section id="contact" class="shape_biggerthan">
-  <picture>
-    <img src={Blueprint.src} alt="" />
-  </picture>
+  <Image image={Blueprint} alt="Blueprint" />
   <ContentLayout>
     <div data-parallax>
       <h2>Háblanos de tu proyecto</h2>

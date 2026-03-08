@@ -1,4 +1,5 @@
 ---
+import Card from "../../elements/Card.astro";
 import ContentLayout from "../../elements/ContentLayout.astro";
 
 import type { PageI18n_Props } from "../../locales";
@@ -14,58 +15,80 @@ const { locales } = Astro.props;
   <main data-current-page="consultancy" transition:name="consultancy">
     <h1>{locales.header}</h1>
 
+    <quoteblock>
+      Vuestros procesos huelen a basura (y yo de basura entiendo un rato)
+    </quoteblock>
+
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-      vulputate venenatis eros. Aliquam sollicitudin ipsum aliquet enim commodo,
-      sed rhoncus dui congue. Mauris ut sollicitudin nibh, at ultrices ex. Proin
-      congue imperdiet nunc. In risus quam, consectetur non orci quis,
-      condimentum semper purus. Nam arcu ipsum, tristique ac mi at, maximus
-      maximus nunc. Aliquam turpis nunc, malesuada vitae hendrerit nec, congue
-      ac ligula. Quisque tempus mollis nibh eget malesuada. Proin convallis
-      ullamcorper tellus, nec interdum orci rutrum scelerisque. Nullam tellus
-      velit, rhoncus id nibh id, dignissim dignissim turpis. Donec faucibus
-      accumsan risus id pretium. Aenean consectetur, nulla vel blandit ultrices,
-      sem orci tempus lacus, in pharetra urna magna ac felis. Integer tincidunt
-      id libero ultricies porta. Fusce vitae sagittis enim.
+      Llevo años observando vuestras oficinas desde el conducto de ventilación.
+      He visto cómo quemáis presupuestos en reuniones que podrían haber sido un
+      README.md y cómo vuestros desarrolladores pierden mañanas enteras
+      peleándose con configuraciones que un script de 10 líneas resolvería en
+      segundos.
     </p>
     <p>
-      Fusce vel orci semper, sodales orci ac, sollicitudin ipsum. Vestibulum a
-      faucibus metus, in fringilla enim. Donec blandit urna quis arcu posuere,
-      quis viverra risus porta. Pellentesque rutrum sollicitudin eros non
-      semper. Praesent non vestibulum risus. Quisque ante libero, rutrum vel
-      pharetra sit amet, sagittis ac dui. Integer tristique aliquam risus, nec
-      mattis diam. Proin sed dui feugiat, consectetur massa a, porta augue.
-      Maecenas nunc mauris, sollicitudin ac ante ut, vulputate euismod arcu.
-      Curabitur sed lorem id velit tincidunt imperdiet non sed nunc. Donec
-      hendrerit est ut arcu cursus consectetur. Integer lobortis enim ac magna
-      tincidunt dignissim. Phasellus erat velit, cursus nec dolor non, dictum
-      consectetur nulla.
-    </p><p>
-      Donec consectetur ligula in leo euismod, eu consequat erat vehicula. Nulla
-      pharetra fermentum congue. Pellentesque eget accumsan quam. Fusce viverra
-      velit ac lacus imperdiet aliquam. Nunc faucibus pellentesque turpis id
-      convallis. Duis hendrerit leo lacus, vitae vehicula sapien gravida non.
-      Vivamus feugiat aliquam est, ut aliquet quam semper sollicitudin.
-      Pellentesque semper magna id enim convallis mattis.
-    </p><p>
-      Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Duis fringilla velit at tellus tincidunt, id euismod erat
-      pellentesque. Nullam porttitor, magna rutrum tincidunt ultrices, neque
-      sapien accumsan ligula, sit amet vulputate nisi lectus sed ipsum. Morbi
-      urna libero, cursus ut interdum a, sodales et nisl. Nam feugiat dapibus
-      elit pretium iaculis. Ut bibendum laoreet dolor, ac auctor tellus interdum
-      in. Nullam sodales suscipit convallis.
-    </p><p>
-      Morbi non fringilla nunc. Mauris eget diam at sem hendrerit faucibus. Cras
-      finibus tincidunt lectus, quis varius ipsum commodo nec. Proin molestie
-      elit a arcu mollis, vulputate gravida lacus iaculis. Mauris eget ante sit
-      amet ipsum auctor fermentum a at enim. Integer fermentum diam ac urna
-      rhoncus tempor. Praesent eu mi in neque egestas commodo et et magna.
-      Integer rhoncus risus non molestie rutrum. Aliquam erat volutpat.
-      Vestibulum id euismod lacus, sed fringilla nisl. Nulla dignissim dapibus
-      suscipit. Nullam semper scelerisque eleifend. Pellentesque neque massa,
-      mattis sed sollicitudin lobortis, commodo sit amet dui. Pellentesque quis
-      mattis quam, sit amet posuere nibh. Proin eget pulvinar leo.
+      No soy el típico consultor de corbata de seda y diapositivas vacías. Soy
+      el mapache que se mete en el fango para encontrar el cable que hace
+      cortocircuito.
+    </p>
+
+    <h2>Lo que hago</h2> (mientras no me echéis agua):
+
+    <ol>
+      <li>
+        <Card>
+          <h3>Inspección de Cubos (Auditoría de Flujos)</h3>
+
+          <p>
+            Analizo vuestro ciclo de vida de desarrollo. Si vuestro proceso de
+            despliegue tiene más pasos que una receta de cocina francesa,
+            tenemos un problema. El objetivo: Eliminar la fricción. Si no aporta
+            valor al código final, va directo a la trituradora.
+          </p>
+        </Card>
+      </li>
+      <li>
+        <Card>
+          <h3>Exterminio de "Burocracia Digital"</h3>
+          <p>
+            ¿Tenéis herramientas de gestión que nadie usa pero que todos pagáis?
+            ¿Hacéis dailies de 45 minutos? El objetivo: Automatizar lo aburrido.
+            Implemento herramientas que funcionan solas para que vuestro equipo
+            pueda volver a hacer lo que se supone que saben hacer: picar código.
+          </p>
+        </Card>
+      </li>
+      <li>
+        <Card>
+          <h3>Arquitectura de Guerrilla</h3>
+          <p>
+            A veces el problema no es el equipo, es el plano. Reviso vuestra
+            arquitectura Frontend para que sea escalable, mantenible y, sobre
+            todo, lógica. El objetivo: Que dentro de seis meses, cuando yo esté
+            en otro callejón, vuestro equipo no tenga que llamarme llorando
+            porque nada encaja.
+          </p>
+        </Card>
+      </li>
+    </ol>
+
+    <h2>¿Por qué confiar en un bicho con antifaz?</h2>
+    <p>
+      La mayoría de las consultoras te venden "transformación digital". Yo te
+      vendo astucia. Sé cómo moverme por los sistemas más enrevesados porque he
+      aprendido a base de golpes, parches y noches en vela.
+    </p>
+
+    <quoteblock>
+      Si funciona pero es un caos, no funciona. Solo está esperando el momento
+      oportuno para morderte.
+    </quoteblock>
+
+    <h2>[ SOLICITAR INTERVENCIÓN URGENTE ]</h2>
+
+    <p>
+      Haz clic en el botón, rellena el formulario y, por lo que más quieras, no
+      intentes arreglarlo tú solo antes de que llegue. Solo lo empeorarás.
     </p>
   </main>
 </ContentLayout>

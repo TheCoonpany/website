@@ -19,16 +19,30 @@ const locales = LOCALES[lang].app.footer;
 <footer id="app-footer">
   <ContentLayout>
     <nav>
-      <p id="company">The Coonpany | {new Date().getFullYear()}</p>
-      <a
-        href="https://github.com/TheCoonpany/website"
-        target="_blank"
-        id="made-with-astro"
-      >
-        <span>{locales.madeWith}</span>
-        <img src={AstroLogo.src} alt="Astro logo" />
-        <span>Astro</span>
-      </a>
+      <div>
+        <p id="company">The Coonpany | {new Date().getFullYear()}</p>
+        <a
+          href="https://github.com/TheCoonpany/website"
+          target="_blank"
+          id="made-with-astro"
+        >
+          <span>{locales.madeWith}</span>
+          <img src={AstroLogo.src} alt="Astro logo" />
+          <span>Astro</span>
+        </a>
+
+        <ul id="social">
+          {
+            SOCIAL.map(({ name, href, icon }) => (
+              <li>
+                <a href={href} target="_blank" title={name} aria-label={name}>
+                  <Icon icon={icon} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
       <ul id="legal">
         {
@@ -36,18 +50,6 @@ const locales = LOCALES[lang].app.footer;
             <li>
               <a href={href} aria-label={name}>
                 {name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <ul id="social">
-        {
-          SOCIAL.map(({ name, href, icon }) => (
-            <li>
-              <a href={href} target="_blank" title={name} aria-label={name}>
-                <Icon icon={icon} />
               </a>
             </li>
           ))
@@ -66,11 +68,14 @@ const locales = LOCALES[lang].app.footer;
 
     nav {
       color: #ddd;
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: max-content;
-      justify-content: space-between;
-      align-items: center;
+
+      > div {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       #company {
         font-size: 0.9rem;
@@ -87,7 +92,8 @@ const locales = LOCALES[lang].app.footer;
         }
       }
 
-      #social {
+      #social,
+      #legal {
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -97,6 +103,15 @@ const locales = LOCALES[lang].app.footer;
 
         a {
           --icon_size: 1.75rem;
+        }
+      }
+
+      #legal {
+        gap: 1.5rem;
+        justify-content: center;
+
+        a {
+          font-size: 0.8rem;
         }
       }
 

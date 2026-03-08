@@ -3,6 +3,7 @@ import ContentLayout from "../../elements/ContentLayout.astro";
 import Blueprint from "../../assets/blueprint.jpg";
 
 import type { LocalesDict } from "../../locales";
+import Image from "../../elements/Image.astro";
 
 interface Props {
   locales: LocalesDict["home"];
@@ -12,9 +13,7 @@ const { locales } = Astro.props;
 ---
 
 <section id="hero">
-  <picture>
-    <img src={Blueprint.src} alt="Blueprint" loading="lazy" />
-  </picture>
+  <Image image={Blueprint} alt="Blueprint" />
 
   <ContentLayout>
     <div id="hero-content" data-parallax>

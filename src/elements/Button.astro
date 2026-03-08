@@ -1,18 +1,27 @@
 ---
+import type { Icon_Name } from "./Icon";
+import Icon from "./Icon.astro";
+
 interface Props {
   text?: string;
+  icon?: Icon_Name;
+  wide?: boolean;
 }
 
 const $props = Astro.props;
+
+const modifiers =
+  [$props.wide && "wide"].filter(Boolean).join(" ") || undefined;
 ---
 
-<button data-el="button">
+<button data-el="button" class={modifiers}>
+  <Icon icon={$props.icon || null} />
   <span>
     <slot>{$props.text}</slot>
   </span>
 </button>
 
-<style lang="scss">
+<style is:global lang="scss">
   button[data-el="button"] {
     --_color: var(--button__color, #ddd);
     --_bg: var(--button__bg, #0b3460);
@@ -81,10 +90,12 @@ const $props = Astro.props;
       width: 20%;
       height: var(--_stoke);
     }
-  }
-</style>
 
-<style is:global lang="scss">
+    &.wide {
+      width: 100%;
+    }
+  }
+
   :is(
     button[data-el="button"]:hover,
     button[data-el="button"]:focus,

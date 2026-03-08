@@ -1,19 +1,30 @@
 ---
-import ContentLayout from "../elements/ContentLayout.astro";
+import ContentLayout from "../../elements/ContentLayout.astro";
 
-import type { LocalesDict } from "../locales/_def.types";
+import type { LocalesDict } from "../../locales/_def.types";
 
 interface Props {
-  locales: LocalesDict["consultancy"];
+  locales: LocalesDict["education"];
 }
 
 const { locales } = Astro.props;
+
+const NPM_LIBS = [
+  "@zurich/dev-utils",
+  "@zurich/design-tokens",
+  "@zurich/css-components",
+  "@zurich/web-components",
+  "@zurich/angular-components",
+] as const;
 ---
 
 <div data-page transition:name="home"></div>
+<div data-page transition:name="consultancy"></div>
+<div data-page transition:name="development"></div>
+<div data-page transition:name="education"></div>
 
 <ContentLayout>
-  <main data-current-page="consultancy" transition:name="consultancy">
+  <main data-current-page="about_us" transition:name="about_us">
     <h1>{locales.header}</h1>
 
     <p>
@@ -69,11 +80,31 @@ const { locales } = Astro.props;
       mattis sed sollicitudin lobortis, commodo sit amet dui. Pellentesque quis
       mattis quam, sit amet posuere nibh. Proin eget pulvinar leo.
     </p>
+
+    <h2>Trabajos</h2>
+
+    <p>Autor original de las librerías:</p>
+
+    <ul>
+      {
+        NPM_LIBS.map((lib) => (
+          <li>
+            <a href={`https://www.npmjs.com/package/${lib}`} target="_blank">
+              <img
+                src={`https://img.shields.io/badge/${lib.replace("-", "%20")}-cb3837?style=for-the-badge&logo=npm&logoColor=white`}
+                alt={lib}
+              />
+            </a>
+            &nbsp;
+            <img
+              src={`https://img.shields.io/npm/dy/${lib}?style=for-the-badge&color=white&label=downloads&logo=npm`}
+              alt="npm downloads"
+            />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </ContentLayout>
-
-<div data-page transition:name="development"></div>
-<div data-page transition:name="education"></div>
-<div data-page transition:name="about_us"></div>
 
 <style lang="scss"></style>

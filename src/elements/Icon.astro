@@ -2,16 +2,16 @@
 import type { Icon_Name } from "./Icon";
 
 interface Props {
-  icon: Icon_Name;
+  icon: Icon_Name | null;
 }
 
 const { icon } = Astro.props;
 ---
 
-<i data-el="icon" style={{ "--icon": `url(/icon/${icon}.svg)` }}></i>
+{icon && <i data-el="icon" style={{ "--icon": `url(/icon/${icon}.svg)` }} />}
 
-<style lang="scss">
-  i {
+<style is:global lang="scss">
+  i[data-el="icon"] {
     font-size: var(--icon_size, 1.5rem);
     display: grid;
     place-items: center;

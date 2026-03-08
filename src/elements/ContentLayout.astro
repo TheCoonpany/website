@@ -10,8 +10,8 @@ const { className } = Astro.props;
   <slot />
 </div>
 
-<style lang="scss">
-  div {
+<style is:global lang="scss">
+  div[data-el="content-layout"] {
     width: clamp(320px, 100%, 1200px);
     margin-inline: auto;
     padding-inline: 1.5rem;

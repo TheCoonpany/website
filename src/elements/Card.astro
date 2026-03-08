@@ -1,0 +1,42 @@
+---
+interface Props {
+  tall?: boolean;
+}
+
+const $props = Astro.props;
+
+const modifiers =
+  [$props.tall && "tall"].filter(Boolean).join(" ") || undefined;
+---
+
+<article data-el="card" class={modifiers}>
+  <slot />
+</article>
+
+<style is:global lang="scss">
+  article[data-el="card"] {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    height: 100%;
+    display: grid;
+    background-color: #eee;
+    position: relative;
+    box-shadow: var(--shadow-3);
+    transition: box-shadow 0.3s;
+
+    &.tall {
+      height: 100%;
+    }
+  }
+  a:has(> article[data-el="card"]) {
+    article[data-el="card"] {
+      cursor: pointer;
+    }
+    &:focus,
+    &:hover {
+      > article[data-el="card"] {
+        box-shadow: var(--shadow-5);
+      }
+    }
+  }
+</style>

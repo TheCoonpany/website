@@ -1,20 +1,19 @@
 ---
-import ContentLayout from "../elements/ContentLayout.astro";
+import ContentLayout from "../../elements/ContentLayout.astro";
 
-import type { LocalesDict } from "../locales/_def.types";
+import type { LocalesDict } from "../../locales/_def.types";
 
 interface Props {
-  locales: LocalesDict["development"];
+  locales: LocalesDict["consultancy"];
 }
 
 const { locales } = Astro.props;
 ---
 
 <div data-page transition:name="home"></div>
-<div data-page transition:name="consultancy"></div>
 
 <ContentLayout>
-  <main data-current-page="development" transition:name="development">
+  <main data-current-page="consultancy" transition:name="consultancy">
     <h1>{locales.header}</h1>
 
     <p>
@@ -73,6 +72,7 @@ const { locales } = Astro.props;
   </main>
 </ContentLayout>
 
+<div data-page transition:name="development"></div>
 <div data-page transition:name="education"></div>
 <div data-page transition:name="about_us"></div>
 

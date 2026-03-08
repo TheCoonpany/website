@@ -16,5 +16,11 @@ export default defineConfig({
         '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       }
     }
+  },
+  // https://docs.astro.build/en/guides/environment-variables/#basic-usage
+  env: {
+    schema: {
+
+    }
   }
 });

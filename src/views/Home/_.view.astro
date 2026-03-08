@@ -4,13 +4,9 @@ import Services from "./Services.astro";
 import Methodology from "./Methodology.astro";
 import Contact from "./Contact.astro";
 
-import type { LocalesDict } from "../../locales/_def.types";
-import type { Locale } from "../../helpers/locales";
+import type { PageI18n_Props } from "../../locales";
 
-interface Props {
-  lang: Locale;
-  locales: LocalesDict["home"];
-}
+interface Props extends PageI18n_Props<"home"> {}
 
 const props = Astro.props;
 ---
@@ -37,7 +33,7 @@ const props = Astro.props;
       width: 100%;
       margin-top: calc(var(--_skew, 0) * -1);
       padding-top: var(--_skew);
-      padding-bottom: 5rem;
+      // padding-bottom: 5rem;
       min-height: 10rem;
 
       > picture {

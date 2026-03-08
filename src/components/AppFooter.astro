@@ -4,8 +4,8 @@ import Icon from "../elements/Icon.astro";
 import ContentLayout from "../elements/ContentLayout.astro";
 import * as LOCALES from "../locales";
 
-import type { Icon_Name } from "../elements/Icon";
-import type { Locale } from "../helpers/locales";
+import type { Locale } from "../locales";
+import { SOCIAL, LEGAL_LINKS } from "./AppFooter.content";
 
 interface Props {
   lang: Locale;
@@ -14,40 +14,12 @@ interface Props {
 const { lang } = Astro.props;
 
 const locales = LOCALES[lang].app.footer;
-
-const SOCIAL = [
-  {
-    name: "GitHub",
-    href: "https://github.com/TheCoonpany",
-    icon: "github",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/the-coonpany",
-    icon: "linkedin",
-  },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/@TheCoonpany",
-    icon: "youtube",
-  },
-  {
-    name: "Email",
-    href: "mailto:info@thecoonpany.dev",
-    icon: "mail",
-  },
-] as const satisfies readonly {
-  name: string;
-  href: string;
-  icon: Icon_Name;
-}[];
 ---
 
 <footer id="app-footer">
   <ContentLayout>
     <nav>
       <p id="company">The Coonpany | {new Date().getFullYear()}</p>
-
       <a
         href="https://github.com/TheCoonpany/website"
         target="_blank"
@@ -57,6 +29,18 @@ const SOCIAL = [
         <img src={AstroLogo.src} alt="Astro logo" />
         <span>Astro</span>
       </a>
+
+      <ul id="legal">
+        {
+          LEGAL_LINKS(lang).map(({ name, href }) => (
+            <li>
+              <a href={href} aria-label={name}>
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
 
       <ul id="social">
         {

@@ -1,12 +1,10 @@
 ---
-import { ROUTES } from "../helpers/sitemap";
 import ContentLayout from "../elements/ContentLayout.astro";
 import FolderLinks from "./AppHeader.FolderLinks.astro";
 import Img from "../assets/raccoon_3.png";
 import * as LOCALES from "../locales";
 
-import { AVAILABLE_LOCALES, type Locale } from "../helpers/locales";
-import { objectEntries } from "../_shared/helpers";
+import { AVAILABLE_LOCALES, type Locale } from "../locales";
 
 interface Props {
   lang: Locale;
@@ -15,12 +13,6 @@ interface Props {
 const { lang } = Astro.props;
 
 const locales = LOCALES[lang].app.header;
-
-const entries = objectEntries(ROUTES[lang]).map(([page, value]) => ({
-  page,
-  name: value.label,
-  href: value.url,
-}));
 
 function localizeLang(value: Locale) {
   const transLang = new Intl.DisplayNames(lang, {
@@ -39,7 +31,7 @@ function localizeLang(value: Locale) {
         <span>The Coonpany</span>
       </a>
 
-      <FolderLinks links={entries} />
+      <FolderLinks lang={lang} />
 
       <ul id="lang-selector">
         {

@@ -1,12 +1,11 @@
 ---
 import WIP_View from "../views/WIP.view.astro";
 import Layout from "../layouts/Layout.astro";
+import { getPageI18n } from "../locales";
 
-import { es } from "../locales";
-
-const locales = es.home;
+const i18n = getPageI18n(import.meta.url, "home");
 ---
 
-<Layout meta={{ ...locales.meta, url: Astro.url.pathname }} lang="es">
+<Layout {...i18n}>
 	<WIP_View />
 </Layout>

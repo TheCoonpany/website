@@ -3,6 +3,6 @@
   "liveServer.settings.port": 5500,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "*.astro": "${capture}.ts, ${capture}.scss, ${capture}.*.astro",
+    "*.astro": "${capture}.ts, ${capture}.content.ts, ${capture}.scss",
   }
 }

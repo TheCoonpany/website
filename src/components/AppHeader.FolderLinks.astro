@@ -1,40 +1,16 @@
 ---
-import { objectKeys } from "../_shared/helpers";
-import type { Icon_Name } from "../elements/Icon";
 import Icon from "../elements/Icon.astro";
-import type { Nav_Entry } from "../helpers/sitemap";
+import type { Locale } from "../locales";
+import { HEADER_LINKS } from "./AppHeader.FolderLinks.content";
 
 interface Props {
-  links: readonly {
-    name: string;
-    page: Nav_Entry;
-    href: string;
-  }[];
+  lang: Locale;
 }
-
-const { links } = Astro.props;
-
-const HEADER_ICONS = {
-  consultancy: "consultancy",
-  development: "terminal",
-  education: "education",
-  about_us: "clip",
-} as const satisfies Partial<Record<Nav_Entry, Icon_Name>>;
-
-const HEADER_LINKS = objectKeys(HEADER_ICONS).map((key) => {
-  const entry = links.find((link) => link.page === key);
-  if (!entry) throw new Error(`No entry found for page "${key}"`);
-  return {
-    ...entry,
-    page: key,
-    icon: HEADER_ICONS[key],
-  };
-});
 ---
 
 <ul id="folder-links">
   {
-    HEADER_LINKS.map(({ name, page, href, icon }, i) => (
+    HEADER_LINKS(Astro.props.lang).map(({ name, page, href, icon }, i) => (
       <li data-to={page} style={{ "--item": i }}>
         <a href={href} title={name} aria-label={name}>
           <Icon icon={icon} />

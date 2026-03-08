@@ -1,11 +1,9 @@
 ---
 import ContentLayout from "../../elements/ContentLayout.astro";
 
-import type { LocalesDict } from "../../locales/_def.types";
+import type { PageI18n_Props } from "../../locales";
 
-interface Props {
-  locales: LocalesDict["education"];
-}
+interface Props extends PageI18n_Props<"education"> {}
 
 const { locales } = Astro.props;
 ---

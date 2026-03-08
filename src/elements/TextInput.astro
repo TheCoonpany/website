@@ -1,13 +1,11 @@
 ---
-interface Props {
-  label: string;
-  name: string;
-  type?: "text" | "email";
-}
+import type { TextInput_Props } from "./TextInput.props";
+
+interface Props extends TextInput_Props {}
 
 const $props = Astro.props;
 ---
 
-<app-text-input label={$props.label} name={$props.name}></app-text-input>
+<app-text-input {...$props}></app-text-input>
 
 <script src="./TextInput"></script>

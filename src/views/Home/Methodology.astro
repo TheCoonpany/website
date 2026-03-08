@@ -1,0 +1,59 @@
+---
+import ContentLayout from "../../elements/ContentLayout.astro";
+import type { LocalesDict } from "../../locales/_def.types";
+
+interface Props {
+  locales: LocalesDict["home"];
+}
+
+const { locales } = Astro.props;
+---
+
+<section id="methodology" class="shape_smallerthan">
+  <picture></picture>
+  <ContentLayout>
+    <div data-parallax>
+      <h2>¿Qué hacemos?</h2>
+
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          width="100%"
+        >
+          <!-- <g transform="translate(0,10)">
+            <text>Hello</text>
+          </g>
+          <rect x="10" y="10" width="20" height="20"></rect> -->
+        </svg>
+      </div>
+    </div>
+  </ContentLayout>
+</section>
+
+<style is:global lang="scss">
+  section#methodology {
+    color: #ddd;
+    --_bg: #1f2025;
+    --_skew: 5rem;
+
+    [data-parallax] {
+      svg {
+        font-size: 1rem;
+        font-family: "Courier New", Courier, monospace;
+        border: 1px solid #ddd;
+        roke: #ddd;
+        * {
+          fill: #ddd;
+          vector-effect: non-scaling-stroke;
+        }
+        rect {
+          fill: transparent;
+          stroke-width: 0.1rem;
+          stroke: #ddd;
+        }
+      }
+    }
+  }
+</style>

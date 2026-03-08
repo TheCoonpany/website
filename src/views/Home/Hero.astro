@@ -26,33 +26,21 @@ const { locales } = Astro.props;
   </ContentLayout>
 </section>
 
-<style lang="scss">
-  #hero {
-    position: relative;
-    width: 100%;
+<style is:global lang="scss">
+  section#hero {
     height: clamp(30rem, calc(50rem - 50dvw), 50rem);
-    overflow: visible;
-    margin-bottom: calc(var(--blueprint__skew) * -1);
+    --_bg: #061f38;
 
-    > picture {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      background-color: #061f38;
-      clip-path: polygon(
-        0% calc(100% - var(--blueprint__skew)),
-        0% 0%,
-        100% var(--header__skew),
-        100% 100%
-      );
+    > picture > img {
+      object-position: 60% 20%;
+      filter: brightness(0.5);
+    }
 
-      > img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        object-position: 60% 20%;
-        filter: brightness(0.5);
-      }
+    [data-el="content-layout"] {
+      position: relative;
+      height: 100%;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
   }
 
@@ -78,18 +66,6 @@ const { locales } = Astro.props;
     p {
       font-size: 1rem;
       margin-top: 1rem;
-    }
-  }
-</style>
-
-<style is:global lang="scss">
-  #hero {
-    [data-el="content-layout"] {
-      position: relative;
-      height: 100%;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding-bottom: calc(var(--blueprint__skew) + 0.5rem);
     }
   }
 </style>

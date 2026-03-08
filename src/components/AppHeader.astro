@@ -31,6 +31,7 @@ function localizeLang(value: Locale) {
 ---
 
 <header id="app-header">
+  <div class="bg"></div>
   <ContentLayout>
     <nav>
       <a id="logo" title="The Coonpany" href={`/${lang}`}>
@@ -61,17 +62,26 @@ function localizeLang(value: Locale) {
   </ContentLayout>
 </header>
 
-<style lang="scss">
+<style is:global lang="scss">
   $height: 4.5rem;
-  $skew: var(--header__skew);
+  $skew: var(--header-skew);
   $anim: 0.2s;
 
   header#app-header {
     --_margins: 1.5rem;
-    background-color: #111;
     inset-inline: 0;
-    clip-path: polygon(0% calc(100% - #{$skew}), 0% 0%, 100% 0, 100% 100%);
     z-index: 100;
+    position: relative;
+
+    > div.bg {
+      position: absolute;
+      display: inline-block;
+      background-color: #111;
+      inset: 0;
+    }
+    > * {
+      clip-path: polygon(0% calc(100% - #{$skew}), 0% 0%, 100% 0, 100% 100%);
+    }
 
     * {
       user-select: none;
@@ -85,6 +95,7 @@ function localizeLang(value: Locale) {
       height: calc($height + #{$skew});
       justify-content: space-between;
       color: #ddd;
+      z-index: 101;
       padding-top: 0.5rem;
     }
 
@@ -172,10 +183,20 @@ function localizeLang(value: Locale) {
     }
 
     @media screen and (width < 800px) {
-      #logo {
-        span {
-          display: none;
-        }
+      #logo span {
+        display: none;
+      }
+    }
+
+    @media screen and (width < 700px) {
+      #logo span {
+        display: inline;
+      }
+    }
+
+    @media screen and (width < 600px) {
+      #logo span {
+        display: none;
       }
     }
 

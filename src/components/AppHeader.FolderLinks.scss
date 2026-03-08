@@ -1,6 +1,10 @@
  $services: (
-   consultancy: -2deg,
-   development: -0.2deg,
-   education: -0.5deg,
-   about_us: 0.7deg,
+   consultancy: (rad: -2deg,
+     label: #b02727),
+   development: (rad: -0.2deg,
+     label: #5edb2d),
+   education: (rad: -0.5deg,
+     label: #2760b0),
+   about_us: (rad: 0.7deg,
+     label: #ecaf34)
  );

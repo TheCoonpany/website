@@ -9,6 +9,7 @@
 }
 
 [data-parallax] {
+  z-index: 101;
   animation: parallax linear;
   animation-timeline: view();
   animation-range: entry 0 cover 100%;

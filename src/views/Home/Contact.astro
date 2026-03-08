@@ -1,0 +1,53 @@
+---
+import ContentLayout from "../../elements/ContentLayout.astro";
+import Blueprint from "../../assets/blueprint.jpg";
+import type { LocalesDict } from "../../locales/_def.types";
+import TextInput from "../../elements/TextInput.astro";
+
+interface Props {
+  locales: LocalesDict["home"];
+}
+
+const { locales } = Astro.props;
+---
+
+<section id="contact" class="shape_biggerthan">
+  <picture>
+    <img src={Blueprint.src} alt="" />
+  </picture>
+  <ContentLayout>
+    <div data-parallax>
+      <h2>Háblanos de tu proyecto</h2>
+
+      <form action="">
+        <TextInput label="nombre" name="name" />
+        <TextInput label="email" name="email" type="email" />
+      </form>
+    </div>
+  </ContentLayout>
+</section>
+
+<style is:global lang="scss">
+  section#contact {
+    color: #ccc;
+    --_bg: #061f38;
+    --_skew: 5rem;
+
+    > picture > img {
+      filter: brightness(0.5);
+    }
+
+    [data-parallax] {
+      form {
+        color: #ddd;
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.6);
+        max-width: 35rem;
+        display: grid;
+        gap: 1rem;
+      }
+    }
+  }
+</style>

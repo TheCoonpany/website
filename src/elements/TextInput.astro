@@ -1,0 +1,13 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  type?: "text" | "email";
+}
+
+const $props = Astro.props;
+---
+
+<app-text-input label={$props.label} name={$props.name}></app-text-input>
+
+<script src="./TextInput"></script>

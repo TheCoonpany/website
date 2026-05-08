@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://thecoonpany.com',
+  site: 'https://thecoonpany.github.io/website/',
   i18n: {
     defaultLocale: 'es',
     locales: ['en', 'es']

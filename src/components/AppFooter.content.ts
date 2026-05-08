@@ -17,7 +17,7 @@ export const SOCIAL = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/the-coonpany",
+    href: "https://www.linkedin.com/company/thecoonpany",
     icon: "linkedin",
   },
   {
@@ -27,7 +27,7 @@ export const SOCIAL = [
   },
   {
     name: "Email",
-    href: "mailto:info@thecoonpany.dev",
+    href: "mailto:info@thecoonpany.com",
     icon: "mail",
   },
 ] as const satisfies readonly {

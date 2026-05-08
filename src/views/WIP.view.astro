@@ -22,15 +22,14 @@ import Image from "../elements/Image.astro";
 	main {
 		position: relative;
 		display: grid;
-		height: 100%;
-		max-width: 50rem;
+		height: 100dvh;
 		place-items: center;
 		align-content: center;
 		margin-inline: auto;
 		grid-auto-columns: 1fr;
 
 		> h1 {
-			font-size: 5rem;
+			font-size: clamp(2.5rem, 10dvw, 5rem);
 			text-align: center;
 		}
 
@@ -47,9 +46,9 @@ import Image from "../elements/Image.astro";
 			border-image: repeating-linear-gradient(
 					-55deg,
 					#000,
-					#000 20px,
-					var(--color_warning) 20px,
-					var(--color_warning) 40px
+					#000 1.5rem,
+					var(--color_warning) 1.5rem,
+					var(--color_warning) 2.5rem
 				)
 				10;
 
@@ -72,16 +71,20 @@ import Image from "../elements/Image.astro";
 				}
 			}
 		}
+	}
+</style>
 
+<style is:global lang="scss">
+	main#wip {
 		picture {
 			width: 100%;
-		}
 
-		img {
-			aspect-ratio: 1;
-			object-fit: contain;
-			margin-bottom: 10rem;
-			border-radius: 50%;
+			img {
+				aspect-ratio: 1;
+				object-fit: contain;
+				border-radius: 50%;
+				width: 100%;
+			}
 		}
 	}
 </style>

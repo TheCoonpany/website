@@ -1,4 +1,6 @@
-export interface LocalesDict {
+import type { Route } from '../router.types';
+
+export type LocalesDict = {
   _shared: {
 
   },
@@ -51,9 +53,8 @@ export interface LocalesDict {
     meta: Page_Meta;
     header: string;
   };
-}
+};
 
-export type Route = keyof Omit<LocalesDict, "_shared" | "app">;
 
 export interface Page_Meta {
   readonly title: string;

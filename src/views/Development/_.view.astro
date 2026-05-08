@@ -1,0 +1,98 @@
+---
+import Card from "../../elements/Card.astro";
+import ContentLayout from "../../elements/ContentLayout.astro";
+
+import type { PageI18n_Props } from "../../locales";
+
+interface Props extends PageI18n_Props<"development"> {}
+
+const { locales } = Astro.props;
+---
+
+<div data-page transition:name="home"></div>
+<div data-page transition:name="consultancy"></div>
+
+<ContentLayout>
+  <main data-current-page="development" transition:name="development">
+    <h1>{locales.header}</h1>
+
+    <!-- <h2>"Código forjado con garras de seda (y mucha cafeína)"</h2>
+
+    <p>
+      En The Coonpany no "picamos teclas" al peso. Construimos interfaces que
+      tienen alma, peso y una lógica que no se rompe al primer soplido. Si
+      buscas una plantilla de WordPress que cargue 40 librerías para mostrar un
+      hola mundo, llama a otro. Yo entro por la ventana, analizo vuestra
+      necesidad y levanto una arquitectura que se siente robusta como un
+      archivador de acero pero se mueve fluida como un mapache huyendo de un
+      guardia nocturno.
+    </p>
+
+    <h2>Mi "Kit de Herramientas" (Lo que encuentro útil):</h2>
+
+    <Card>
+      <h3>Interfaces con Tacto (Skeuomorphic & Beyond)</h3>
+      <p>
+        Me aburre la web plana y sin vida. Me gusta que los botones parezcan
+        botones y que las interacciones tengan feedback real. El objetivo: Que
+        el usuario quiera tocar la pantalla. Uso React, Next.js y CSS de alta
+        precisión para que la experiencia sea física.
+      </p>
+    </Card>
+    <Card>
+      <h3>Rendimiento de Supervivencia (Performance)</h3>
+      <p>
+        En el callejón no hay fibra óptica de 1Gbps. Optimizo cada activo, cada
+        fuente y cada línea de JS para que vuestra web vuele, incluso en
+        dispositivos que deberían estar en un museo. El objetivo: Web Vitals en
+        verde oscuro. Si tarda más de 1 segundo en ser interactiva, para mí es
+        basura.
+      </p>
+    </Card>
+    <Card>
+      <h3>Tipografía y Estética "Coon-Standard"</h3>
+      <p>
+        Tengo opiniones fuertes sobre la jerarquía visual. Si el espaciado no es
+        perfecto, no duermo. El objetivo: Un diseño que respire. Mezclo esa
+        estética industrial/botánica con una usabilidad impecable. HTML
+        semántico por bandera.
+      </p>
+    </Card>
+    <h2>¿Por qué mi código es diferente?</h2>
+    <p>
+      La mayoría de los humanos escriben código para que lo entienda una
+      máquina. Yo escribo código para que lo entienda otro mapache dentro de
+      cinco años. Es artesanía pura:
+    </p>
+
+    <ul>
+      <li>Componentes modulares: Como piezas de un mecano antiguo.</li>
+      <li>
+        TypeScript estricto: Porque no me gustan las sorpresas a las 3 de la
+        mañana.
+      </li>
+      <li>
+        Documentación legible: Instrucciones que hasta un gerente entendería.
+      </li>
+    </ul>
+    <quoteblock>
+      "Un buen frontend es como una buena cerradura: si no te das cuenta de que
+      está ahí mientras la usas, es que es perfecta."
+    </quoteblock>
+
+    <h2>[ LANZAR PETICIÓN DE DESARROLLO ]</h2>
+    <p>
+      Si tienes un diseño en Figma, tráelo. Si tienes un boceto en una
+      servilleta manchada de pizza, mejor todavía. Vamos a darle vida.
+    </p> -->
+  </main>
+</ContentLayout>
+
+<div data-page transition:name="education"></div>
+<div data-page transition:name="about_us"></div>
+
+<style lang="scss" scoped>
+  main[data-current-page] {
+    margin-top: 2rem;
+  }
+</style>

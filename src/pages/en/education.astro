@@ -1,15 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Education_View from "../../views/Education.view.astro";
+import Education_View from "../../views/Education/_.view.astro";
 
-import { getPageI18n } from "../../helpers/locales";
+import { getPageI18n } from "../../locales";
 
 const i18n = getPageI18n(import.meta.url, "education");
 ---
 
-<Layout
-  meta={{ ...i18n.locales.meta, url: Astro.url.pathname }}
-  lang={i18n.lang}
->
+<Layout {...i18n}>
   <Education_View {...i18n} />
 </Layout>

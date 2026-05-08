@@ -1,20 +1,31 @@
 ---
+import type { Icon_Name } from "./Icon";
+import Icon from "./Icon.astro";
+
 interface Props {
   text?: string;
+  icon?: Icon_Name;
+  wide?: boolean;
 }
 
 const $props = Astro.props;
+
+const modifiers =
+  [$props.wide && "wide"].filter(Boolean).join(" ") || undefined;
 ---
 
-<button data-el="button">
+<button data-el="button" class={modifiers}>
+  <Icon icon={$props.icon || null} />
   <span>
     <slot>{$props.text}</slot>
   </span>
 </button>
 
-<style lang="scss">
+<style is:global lang="scss">
   button[data-el="button"] {
     --_color: var(--button__color, #ddd);
+    --_bg: var(--button__bg, #0b3460);
+    --_stoke: 2px;
     position: relative;
     cursor: pointer;
     width: max-content;
@@ -23,9 +34,9 @@ const $props = Astro.props;
     color: var(--_color);
     padding: 0;
     border: none;
-    background-color: #0b3460;
+    background-color: var(--_bg);
     transition: all 0.3s ease;
-    border: 2px solid #0b3460;
+    border: 2px solid var(--_bg);
 
     &,
     > span {
@@ -40,27 +51,8 @@ const $props = Astro.props;
     }
 
     &:focus {
-      --_color: #f88c07;
+      --_color: var(--neon_blue);
       outline: none;
-    }
-
-    &:focus,
-    &:hover {
-      background-color: #104884;
-      border-color: #104884;
-    }
-
-    &:focus,
-    &:hover {
-      &,
-      > span {
-        &:before {
-          height: 100%;
-        }
-        &:after {
-          width: 100%;
-        }
-      }
     }
 
     > span {
@@ -76,11 +68,11 @@ const $props = Astro.props;
         top: 0;
       }
       &:before {
-        width: 2px;
+        width: var(--_stoke);
         height: 50%;
       }
       &:after {
-        height: 2px;
+        height: var(--_stoke);
         width: 20%;
       }
     }
@@ -92,11 +84,32 @@ const $props = Astro.props;
     }
     &:before {
       height: 50%;
-      width: 2px;
+      width: var(--_stoke);
     }
     &:after {
       width: 20%;
-      height: 2px;
+      height: var(--_stoke);
+    }
+
+    &.wide {
+      width: 100%;
+    }
+  }
+
+  :is(
+    button[data-el="button"]:hover,
+    button[data-el="button"]:focus,
+    :is(a:hover, a:focus) button[data-el="button"]
+  ) {
+    --_bg: #104884 !important;
+    &,
+    > span {
+      &:before {
+        height: 100% !important;
+      }
+      &:after {
+        width: 100% !important;
+      }
     }
   }
 </style>

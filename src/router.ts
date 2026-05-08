@@ -1,12 +1,9 @@
 
-import { en, es } from "../locales";
-import type { Route } from '../locales/_def.types';
-import type { Locale } from './locales';
+import { en, es } from "./locales";
+import type { Locale } from './locales/helpers.types';
+import type { Route, SitemapEntry } from './router.types';
 
-interface SitemapEntry {
-  readonly url: string;
-  readonly label: string;
-}
+export * from './router.types';
 
 export const ROUTES = {
   es: {
@@ -70,5 +67,3 @@ export const ROUTES = {
     }
   },
 } as const satisfies Record<Locale, Record<Route, SitemapEntry>>;
-
-export type Nav_Entry = keyof typeof ROUTES[Locale];

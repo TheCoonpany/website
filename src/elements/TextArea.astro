@@ -1,0 +1,15 @@
+---
+import type { TextArea_Props } from "./TextArea.props";
+
+interface Props extends TextArea_Props {
+  label: string;
+  name: string;
+  type?: "text" | "email";
+}
+
+const $props = Astro.props;
+---
+
+<app-text-area {...$props}></app-text-area>
+
+<script src="./TextArea"></script>

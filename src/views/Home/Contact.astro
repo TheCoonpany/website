@@ -1,0 +1,71 @@
+---
+import ContentLayout from "../../elements/ContentLayout.astro";
+import Blueprint from "../../assets/blueprint.jpg";
+import TextInput from "../../elements/TextInput.astro";
+import TextArea from "../../elements/TextArea.astro";
+import Button from "../../elements/Button.astro";
+import Image from "../../elements/Image.astro";
+
+import type { LocalesDict } from "../../locales";
+
+interface Props {
+  locales: LocalesDict["home"];
+}
+
+const { locales } = Astro.props;
+---
+
+<section id="contact" class="shape_biggerthan">
+  <Image image={Blueprint} alt="Blueprint" />
+  <ContentLayout>
+    <div data-parallax>
+      <h2>Háblanos de tu proyecto</h2>
+
+      <form action="">
+        <p>
+          Escríbenos a <a href="mailto:info@thecoonpany.com"
+            >info@thecoonpany.com</a
+          >
+        </p>
+        <!-- <h3>Formulario</h3>
+        <TextInput label="nombre" name="name" />
+        <TextInput label="apellidos" name="surname" />
+        <TextInput label="email" name="email" />
+        <TextInput label="empresa" name="company" />
+        <TextInput label="teléfono" name="phone" />
+        <TextArea label="cuéntanos" name="description" />
+        <Button text="Enviar" /> -->
+      </form>
+    </div>
+  </ContentLayout>
+
+  <style is:global lang="scss">
+    section#contact {
+      color: #ccc;
+      padding-bottom: 15rem;
+      --_bg: #061f38;
+      --_skew: 5rem;
+
+      > picture > img {
+        filter: brightness(0.5);
+      }
+
+      [data-parallax] {
+        form {
+          color: #ddd;
+          padding: 1rem 2rem;
+          border-radius: 0.75rem;
+          box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
+          background-color: rgba(0, 0, 0, 0.6);
+          max-width: 35rem;
+          display: grid;
+          gap: 1rem;
+
+          a {
+            color: var(--neon_blue);
+          }
+        }
+      }
+    }
+  </style>
+</section>

@@ -1,15 +1,14 @@
 ---
 import ContentLayout from "../elements/ContentLayout.astro";
 import Img from "../assets/raccoon_3.png";
+import Image from "../elements/Image.astro";
 ---
 
 <main id="wip">
 	<ContentLayout>
 		<main>
 			<h1>The<br />Coonpany</h1>
-			<picture>
-				<img src={Img.src} alt="Logo" />
-			</picture>
+			<Image image={Img} alt="Logo" />
 			<div>
 				<div>
 					{Array.from({ length: 10 }, () => <h3>Site under coonstruction</h3>)}
@@ -23,15 +22,14 @@ import Img from "../assets/raccoon_3.png";
 	main {
 		position: relative;
 		display: grid;
-		height: 100%;
-		max-width: 50rem;
+		height: 100dvh;
 		place-items: center;
 		align-content: center;
 		margin-inline: auto;
 		grid-auto-columns: 1fr;
 
 		> h1 {
-			font-size: 5rem;
+			font-size: clamp(2.5rem, 10dvw, 5rem);
 			text-align: center;
 		}
 
@@ -48,9 +46,9 @@ import Img from "../assets/raccoon_3.png";
 			border-image: repeating-linear-gradient(
 					-55deg,
 					#000,
-					#000 20px,
-					var(--color_warning) 20px,
-					var(--color_warning) 40px
+					#000 1.5rem,
+					var(--color_warning) 1.5rem,
+					var(--color_warning) 2.5rem
 				)
 				10;
 
@@ -73,16 +71,20 @@ import Img from "../assets/raccoon_3.png";
 				}
 			}
 		}
+	}
+</style>
 
+<style is:global lang="scss">
+	main#wip {
 		picture {
 			width: 100%;
-		}
 
-		img {
-			aspect-ratio: 1;
-			object-fit: contain;
-			margin-bottom: 10rem;
-			border-radius: 50%;
+			img {
+				aspect-ratio: 1;
+				object-fit: contain;
+				border-radius: 50%;
+				width: 100%;
+			}
 		}
 	}
 </style>

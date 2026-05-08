@@ -1,0 +1,11 @@
+---
+import type { TextInput_Props } from "./TextInput.props";
+
+interface Props extends TextInput_Props {}
+
+const $props = Astro.props;
+---
+
+<app-text-input {...$props}></app-text-input>
+
+<script src="./TextInput"></script>

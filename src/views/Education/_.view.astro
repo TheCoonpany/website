@@ -1,0 +1,99 @@
+---
+import Card from "../../elements/Card.astro";
+import ContentLayout from "../../elements/ContentLayout.astro";
+
+import type { PageI18n_Props } from "../../locales";
+
+interface Props extends PageI18n_Props<"education"> {}
+
+const { locales } = Astro.props;
+---
+
+<div data-page transition:name="home"></div>
+<div data-page transition:name="consultancy"></div>
+<div data-page transition:name="development"></div>
+
+<ContentLayout>
+  <main data-current-page="education" transition:name="education">
+    <h1>{locales.header}</h1>
+
+    <!-- <quoteblock>
+      "Dejad de leer manuales y empezad a ensuciaros las garras"
+    </quoteblock>
+
+    <p>
+      La mayoría de los cursos de formación son como la comida de avión: vienen
+      en bandejas de plástico, no tienen sabor y te dejan con hambre a los diez
+      minutos. En The Coonpany, la formación es distinta. No os voy a leer
+      diapositivas en un proyector con la lente sucia.
+    </p>
+
+    <p>
+      Os voy a enseñar a sobrevivir en el ecosistema del desarrollo moderno. Os
+      daré las herramientas para que vuestro código deje de parecer un vertedero
+      y empiece a parecer una obra de ingeniería.
+    </p>
+
+    <h2>Mis "Talleres de Supervivencia":</h2>
+
+    <Card>
+      <h3>Entrenamiento Frontend (Artesanía Real)</h3>
+      No enseñamos "un poco de CSS". Enseñamos a dominar el layout, a entender cómo
+      respira el navegador y a construir componentes que no se rompan cuando cambias
+      una variable. El objetivo: Que tu equipo deje de copiar y pegar de Stack Overflow
+      y empiece a entender qué está pasando bajo el capó.
+    </Card>
+    <Card>
+      <h3>Mentoría de "Clean Code" para Mapaches</h3>
+      Escribir código que funciona es fácil. Escribir código que sea legible por otro
+      humano (o por ti mismo dentro de tres meses) es el verdadero reto. El objetivo:
+      Refactorización, patrones de diseño aplicados al mundo real y una obsesión enfermiza
+      por la legibilidad.
+    </Card>
+    <Card>
+      <h3>El Método "Coon-Optimizer" (Procesos y Eficiencia)</h3>
+      Enseño a vuestro equipo a usar la terminal, a dominar Git sin miedo y a configurar
+      entornos de desarrollo que no parezcan un rompecabezas de mil piezas. El objetivo:
+      Menos tiempo configurando, más tiempo creando. Si pueden automatizarlo, les
+      enseñaré cómo.
+    </Card>
+
+    <h2>Mi filosofía de enseñanza:</h2>
+    <p>
+      No creo en los certificados con sellos dorados. Creo en los proyectos que
+      funcionan.
+    </p>
+
+    <li>
+      Práctica obsesiva: Aquí se viene a picar código desde el minuto uno.
+    </li>
+    <li>
+      Sin filtros: Si algo es una mala práctica, lo diré. Aunque lo use Google.
+      Especialmente si lo usa Google.
+    </li>
+    <li>
+      Soporte post-traumático: No os abandono al terminar. Si una semana después
+      un bug os acecha, el mapache estará ahí (probablemente por una pequeña
+      cuota en granos de café).
+    </li>
+    <quoteblock>
+      "Un desarrollador que no deja de aprender es un desarrollador que no
+      termina en la papelera de reciclaje de la historia."
+    </quoteblock>
+
+    <h2>[ SOLICITAR PLAN DE ENTRENAMIENTO ]</h2>
+    <p>
+      ¿Quieres que tu equipo deje de ser un lastre y se convierta en una unidad
+      de élite? Dale al botón. Pero aviso: no acepto devoluciones si se vuelven
+      demasiado listos.
+    </p> -->
+  </main>
+</ContentLayout>
+
+<div data-page transition:name="about_us"></div>
+
+<style lang="scss" scoped>
+  main[data-current-page] {
+    margin-top: 2rem;
+  }
+</style>

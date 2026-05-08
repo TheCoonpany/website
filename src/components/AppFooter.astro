@@ -4,8 +4,8 @@ import Icon from "../elements/Icon.astro";
 import ContentLayout from "../elements/ContentLayout.astro";
 import * as LOCALES from "../locales";
 
-import type { Icon_Name } from "../elements/Icon";
-import type { Locale } from "../helpers/locales";
+import type { Locale } from "../locales";
+import { SOCIAL, LEGAL_LINKS } from "./AppFooter.content";
 
 interface Props {
   lang: Locale;
@@ -14,52 +14,42 @@ interface Props {
 const { lang } = Astro.props;
 
 const locales = LOCALES[lang].app.footer;
-
-const SOCIAL = [
-  {
-    name: "GitHub",
-    href: "https://github.com/TheCoonpany",
-    icon: "github",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/the-coonpany",
-    icon: "linkedin",
-  },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/@TheCoonpany",
-    icon: "youtube",
-  },
-  {
-    name: "Email",
-    href: "mailto:info@thecoonpany.dev",
-    icon: "mail",
-  },
-] as const satisfies readonly {
-  name: string;
-  href: string;
-  icon: Icon_Name;
-}[];
 ---
 
 <footer id="app-footer">
   <ContentLayout>
     <nav>
-      <p id="company">The Coonpany | {new Date().getFullYear()}</p>
+      <div>
+        <p id="company">The Coonpany | {new Date().getFullYear()}</p>
+        <a
+          href="https://github.com/TheCoonpany/website"
+          target="_blank"
+          id="made-with-astro"
+        >
+          <span>{locales.madeWith}</span>
+          <img src={AstroLogo.src} alt="Astro logo" />
+          <span>Astro</span>
+        </a>
 
-      <a href="https://astro.build/" target="_blank" id="made-with-astro">
-        <span>{locales.madeWith}</span>
-        <img src={AstroLogo.src} alt="Astro logo" />
-        <span>Astro</span>
-      </a>
+        <ul id="social">
+          {
+            SOCIAL.map(({ name, href, icon }) => (
+              <li>
+                <a href={href} target="_blank" title={name} aria-label={name}>
+                  <Icon icon={icon} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-      <ul id="social">
+      <ul id="legal">
         {
-          SOCIAL.map(({ name, href, icon }) => (
+          LEGAL_LINKS(lang).map(({ name, href }) => (
             <li>
-              <a href={href} target="_blank" title={name} aria-label={name}>
-                <Icon icon={icon} />
+              <a href={href} aria-label={name}>
+                {name}
               </a>
             </li>
           ))
@@ -78,11 +68,14 @@ const SOCIAL = [
 
     nav {
       color: #ddd;
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: max-content;
-      justify-content: space-between;
-      align-items: center;
+
+      > div {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       #company {
         font-size: 0.9rem;
@@ -99,7 +92,8 @@ const SOCIAL = [
         }
       }
 
-      #social {
+      #social,
+      #legal {
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -109,6 +103,15 @@ const SOCIAL = [
 
         a {
           --icon_size: 1.75rem;
+        }
+      }
+
+      #legal {
+        gap: 1.5rem;
+        justify-content: center;
+
+        a {
+          font-size: 0.8rem;
         }
       }
 

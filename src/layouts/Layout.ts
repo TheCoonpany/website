@@ -15,3 +15,11 @@ printConsoleBadge(greeting, {
 });
 
 printConsoleImage("/coding_raccoon.jpg");
+
+const query = new URLSearchParams(window.location.search);
+const flags = [...query.keys()];
+
+if (flags.includes('no-motion')) {
+  console.log(`'no-motion' mode on`);
+  document.querySelector('body')?.setAttribute('data-no-motion', '');
+}

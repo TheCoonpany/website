@@ -1,0 +1,26 @@
+label {
+  display: grid;
+
+  span {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  textarea {
+    height: 2rem;
+    border: 1px solid #ddd;
+    color: #ddd;
+    background-color: transparent;
+    border-radius: .25rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+    padding: .25rem .5rem;
+    resize: vertical;
+  }
+
+  small {
+    &:empty {
+      display: none;
+    }
+  }
+}

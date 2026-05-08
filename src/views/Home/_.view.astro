@@ -1,13 +1,12 @@
 ---
-import type { LocalesDict } from "../../locales/_def.types";
-import type { Locale } from "../../helpers/locales";
 import Hero from "./Hero.astro";
 import Services from "./Services.astro";
+import Methodology from "./Methodology.astro";
+import Contact from "./Contact.astro";
 
-interface Props {
-  lang: Locale;
-  locales: LocalesDict["home"];
-}
+import type { PageI18n_Props } from "../../locales";
+
+interface Props extends PageI18n_Props<"home"> {}
 
 const props = Astro.props;
 ---
@@ -16,6 +15,8 @@ const props = Astro.props;
   <main data-current-page="home" transition:name="home">
     <Hero {...props} />
     <Services {...props} />
+    <Methodology {...props} />
+    <Contact {...props} />
   </main>
 </div>
 
@@ -24,8 +25,47 @@ const props = Astro.props;
 <div data-page transition:name="education"></div>
 <div data-page transition:name="about_us"></div>
 
-<style lang="scss">
+<style is:global lang="scss">
   [data-current-page="home"] {
-    --blueprint__skew: 2rem;
+    > section[id] {
+      position: relative;
+      overflow: visible;
+      width: 100%;
+      margin-top: calc(var(--_skew, 0) * -1);
+      padding-top: var(--_skew);
+      // padding-bottom: 5rem;
+      min-height: 10rem;
+
+      > picture {
+        inset: 0;
+        position: absolute;
+        background-color: var(--_bg);
+
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-top: 0;
+        z-index: 1;
+      }
+
+      &.shape_biggerthan > picture {
+        clip-path: polygon(0% 100%, 0% 0%, 100% var(--_skew, 0), 100% 100%);
+      }
+
+      &.shape_smallerthan {
+        h2 {
+          text-align: right;
+        }
+        > picture {
+          clip-path: polygon(0% 100%, 0% var(--_skew, 0), 100% 0%, 100% 100%);
+        }
+      }
+    }
   }
 </style>

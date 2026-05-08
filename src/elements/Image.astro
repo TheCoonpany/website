@@ -1,0 +1,22 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: ImageMetadata;
+  alt?: string;
+}
+
+const { image, alt } = Astro.props;
+---
+
+<picture data-el="image">
+  <img src={image.src} alt={alt || image.src.split("/").pop()} loading="lazy" />
+</picture>
+
+<style is:global lang="scss">
+  [data-el="image"] {
+    img {
+      content-visibility: auto;
+    }
+  }
+</style>

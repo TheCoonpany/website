@@ -7,13 +7,10 @@ import AppFooter from "../components/AppFooter.astro";
 import "../styles/index.scss";
 import "./Layout.scss";
 
-import type { Page_Meta } from "../locales/_def.types";
-import type { Locale } from "../helpers/locales";
+import type { PageI18n_Props } from "../locales/helpers.types";
+import type { Route } from "../router.types";
 
-interface Props {
-	meta: Page_Meta & { url: string };
-	lang: Locale;
-}
+interface Props extends PageI18n_Props<Route> {}
 
 const { meta, lang } = Astro.props;
 
@@ -61,12 +58,13 @@ const SITE_URL = Astro.site?.toString().replace(/\/$/, "") || "";
 	#app-content {
 		overflow: hidden scroll;
 		display: grid;
+		position: relative;
 		grid-template-rows: 1fr max-content;
 		min-width: 100dvw;
-		scrollbar-color: white #333;
+		scrollbar-color: #e2ff62 #333;
 		scrollbar-width: thin;
 		box-sizing: content-box;
-		margin-top: calc(var(--header__skew) * -1);
+		margin-top: calc(var(--header-skew) * -1);
 
 		&:has(#wip) {
 			overflow: hidden;

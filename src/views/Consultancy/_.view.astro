@@ -1,0 +1,104 @@
+---
+import Card from "../../elements/Card.astro";
+import ContentLayout from "../../elements/ContentLayout.astro";
+
+import type { PageI18n_Props } from "../../locales";
+
+interface Props extends PageI18n_Props<"consultancy"> {}
+
+const { locales } = Astro.props;
+---
+
+<div data-page transition:name="home"></div>
+
+<ContentLayout>
+  <main data-current-page="consultancy" transition:name="consultancy">
+    <h1>{locales.header}</h1>
+
+    <!-- <quoteblock>
+      Vuestros procesos huelen a basura (y yo de basura entiendo un rato)
+    </quoteblock>
+
+    <p>
+      Llevo años observando vuestras oficinas desde el conducto de ventilación.
+      He visto cómo quemáis presupuestos en reuniones que podrían haber sido un
+      README.md y cómo vuestros desarrolladores pierden mañanas enteras
+      peleándose con configuraciones que un script de 10 líneas resolvería en
+      segundos.
+    </p>
+    <p>
+      No soy el típico consultor de corbata de seda y diapositivas vacías. Soy
+      el mapache que se mete en el fango para encontrar el cable que hace
+      cortocircuito.
+    </p>
+
+    <h2>Lo que hago</h2> (mientras no me echéis agua):
+
+    <ol>
+      <li>
+        <Card>
+          <h3>Inspección de Cubos (Auditoría de Flujos)</h3>
+
+          <p>
+            Analizo vuestro ciclo de vida de desarrollo. Si vuestro proceso de
+            despliegue tiene más pasos que una receta de cocina francesa,
+            tenemos un problema. El objetivo: Eliminar la fricción. Si no aporta
+            valor al código final, va directo a la trituradora.
+          </p>
+        </Card>
+      </li>
+      <li>
+        <Card>
+          <h3>Exterminio de "Burocracia Digital"</h3>
+          <p>
+            ¿Tenéis herramientas de gestión que nadie usa pero que todos pagáis?
+            ¿Hacéis dailies de 45 minutos? El objetivo: Automatizar lo aburrido.
+            Implemento herramientas que funcionan solas para que vuestro equipo
+            pueda volver a hacer lo que se supone que saben hacer: picar código.
+          </p>
+        </Card>
+      </li>
+      <li>
+        <Card>
+          <h3>Arquitectura de Guerrilla</h3>
+          <p>
+            A veces el problema no es el equipo, es el plano. Reviso vuestra
+            arquitectura Frontend para que sea escalable, mantenible y, sobre
+            todo, lógica. El objetivo: Que dentro de seis meses, cuando yo esté
+            en otro callejón, vuestro equipo no tenga que llamarme llorando
+            porque nada encaja.
+          </p>
+        </Card>
+      </li>
+    </ol>
+
+    <h2>¿Por qué confiar en un bicho con antifaz?</h2>
+    <p>
+      La mayoría de las consultoras te venden "transformación digital". Yo te
+      vendo astucia. Sé cómo moverme por los sistemas más enrevesados porque he
+      aprendido a base de golpes, parches y noches en vela.
+    </p>
+
+    <quoteblock>
+      Si funciona pero es un caos, no funciona. Solo está esperando el momento
+      oportuno para morderte.
+    </quoteblock>
+
+    <h2>[ SOLICITAR INTERVENCIÓN URGENTE ]</h2>
+
+    <p>
+      Haz clic en el botón, rellena el formulario y, por lo que más quieras, no
+      intentes arreglarlo tú solo antes de que llegue. Solo lo empeorarás.
+    </p> -->
+  </main>
+</ContentLayout>
+
+<div data-page transition:name="development"></div>
+<div data-page transition:name="education"></div>
+<div data-page transition:name="about_us"></div>
+
+<style lang="scss" scoped>
+  main[data-current-page] {
+    margin-top: 2rem;
+  }
+</style>

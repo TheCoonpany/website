@@ -64,15 +64,13 @@ function localizeLang(value: Locale) {
     inset-inline: 0;
     z-index: 100;
     position: relative;
+    clip-path: polygon(0% calc(100% - #{$skew}), 0% 0%, 100% 0, 100% 100%);
 
     > div.bg {
       position: absolute;
       display: inline-block;
       background-color: #111;
       inset: 0;
-    }
-    > * {
-      clip-path: polygon(0% calc(100% - #{$skew}), 0% 0%, 100% 0, 100% 100%);
     }
 
     * {

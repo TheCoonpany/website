@@ -97,4 +97,8 @@ const { locales } = Astro.props;
 <div data-page transition:name="education"></div>
 <div data-page transition:name="about_us"></div>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  main[data-current-page] {
+    margin-top: 2rem;
+  }
+</style>

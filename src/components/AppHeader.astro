@@ -28,7 +28,9 @@ function localizeLang(value: Locale) {
   <ContentLayout>
     <nav>
       <a id="logo" title="The Coonpany" href={`/${lang}`}>
-        <img src={Img.src} alt="The Coonpany" />
+        <picture>
+          <img src={Img.src} alt="The Coonpany" />
+        </picture>
         <Isotype id="isotype" />
       </a>
 
@@ -102,13 +104,18 @@ function localizeLang(value: Locale) {
       align-items: center;
       gap: 1rem;
 
-      img {
-        width: 3.5rem;
-        height: 3.5rem;
+      picture {
         border-radius: 50%;
-        transition:
-          outline $anim,
-          box-shadow $anim;
+        display: grid;
+        margin: 0.05rem;
+
+        img {
+          width: 3.5rem;
+          aspect-ratio: 1;
+          transition:
+            outline $anim,
+            box-shadow $anim;
+        }
       }
 
       #isotype {
@@ -126,7 +133,7 @@ function localizeLang(value: Locale) {
       &:focus {
         outline: none;
 
-        img {
+        picture {
           outline: 2px solid var(--neon_blue);
           box-shadow: 0 0 10px var(--neon_blue);
         }

@@ -1,7 +1,8 @@
 ---
 import ContentLayout from "../elements/ContentLayout.astro";
 import FolderLinks from "./AppHeader.FolderLinks.astro";
-import Img from "../assets/raccoon_3.png";
+import Img from "../../public/logos/TheCoonpany.png";
+import Isotype from "../../public/logos/isotype.svg";
 import * as LOCALES from "../locales";
 
 import { AVAILABLE_LOCALES, type Locale } from "../locales";
@@ -28,7 +29,7 @@ function localizeLang(value: Locale) {
     <nav>
       <a id="logo" title="The Coonpany" href={`/${lang}`}>
         <img src={Img.src} alt="The Coonpany" />
-        <span>The Coonpany</span>
+        <Isotype id="isotype" />
       </a>
 
       <FolderLinks lang={lang} />
@@ -99,23 +100,29 @@ function localizeLang(value: Locale) {
       display: grid;
       grid-template-columns: repeat(2, max-content);
       align-items: center;
+      gap: 1rem;
 
       img {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
         border-radius: 50%;
         transition:
           outline $anim,
           box-shadow $anim;
       }
-      span {
-        margin-top: 0.3em;
-        font-size: 1.5rem;
-        padding: 0.5rem;
-        transition:
-          color $anim,
-          text-shadow $anim;
+
+      #isotype {
+        width: 12rem;
+        --c1: #d6d6d6;
       }
+      // span {
+      //   margin-top: 0.3em;
+      //   font-size: 1.5rem;
+      //   padding: 0.5rem;
+      //   transition:
+      //     color $anim,
+      //     text-shadow $anim;
+      // }
       &:focus {
         outline: none;
 
@@ -123,8 +130,9 @@ function localizeLang(value: Locale) {
           outline: 2px solid var(--neon_blue);
           box-shadow: 0 0 10px var(--neon_blue);
         }
-        span {
-          color: var(--neon_blue);
+        #isotype {
+          --c1: var(--neon_blue);
+          --c2: var(--neon_blue);
           text-shadow: 0 0 10px var(--neon_blue);
         }
       }
@@ -160,8 +168,11 @@ function localizeLang(value: Locale) {
     }
 
     @media screen and (width < 1200px) {
-      #logo span {
-        font-size: 1.25rem;
+      #logo {
+        gap: 0.5rem;
+        #isotype {
+          width: 8rem;
+        }
       }
       #lang-selector {
         font-size: 1rem;
@@ -173,19 +184,19 @@ function localizeLang(value: Locale) {
     }
 
     @media screen and (width < 800px) {
-      #logo span {
+      #logo #isotype {
         display: none;
       }
     }
 
     @media screen and (width < 700px) {
-      #logo span {
+      #logo #isotype {
         display: inline;
       }
     }
 
     @media screen and (width < 600px) {
-      #logo span {
+      #logo #isotype {
         display: none;
       }
     }

@@ -1,13 +1,14 @@
 ---
 import ContentLayout from "../elements/ContentLayout.astro";
-import Img from "../assets/raccoon_3.png";
+import Img from "../../public/logos/TheCoonpany.png";
 import Image from "../elements/Image.astro";
+import Isotype from "../../public/logos/isotype.svg";
 ---
 
 <main id="wip">
 	<ContentLayout>
 		<main>
-			<h1>The<br />Coonpany</h1>
+			<Isotype />
 			<Image image={Img} alt="Logo" />
 			<div>
 				<div>
@@ -27,11 +28,7 @@ import Image from "../elements/Image.astro";
 		align-content: center;
 		margin-inline: auto;
 		grid-auto-columns: 1fr;
-
-		> h1 {
-			font-size: clamp(2.5rem, 10dvw, 5rem);
-			text-align: center;
-		}
+		gap: clamp(0.5rem, 2dvw, 4rem);
 
 		> div {
 			background-color: var(--color_warning);
@@ -82,8 +79,8 @@ import Image from "../elements/Image.astro";
 			img {
 				aspect-ratio: 1;
 				object-fit: contain;
-				border-radius: 50%;
 				width: 100%;
+				max-width: 50rem;
 			}
 		}
 	}
